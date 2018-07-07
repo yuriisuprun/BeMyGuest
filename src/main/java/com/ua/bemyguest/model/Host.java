@@ -10,8 +10,6 @@ import java.util.Set;
 @Data
 public class Host extends Person{
 
-    public static final String ACCOMMODATIONS = "accommodations";
-    public static final String LANGUAGES = "languages";
     public static final String JOIN_DATE = "join_date";
     public static final String WORK = "work";
 

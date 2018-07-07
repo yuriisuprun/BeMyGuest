@@ -16,7 +16,7 @@ public class HostDAOH2Impl implements HostDAO {
 
     private static final String ADD_HOST = String.format("INSERT INTO hosts(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) " +
                     "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", Host.FIRST_NAME, Host.LAST_NAME, Host.EMAIL, Host.PHONE_NUMBER,
-            Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.ACCOMMODATIONS, Host.LANGUAGES, Host.JOIN_DATE, Host.WORK);
+            Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.JOIN_DATE, Host.WORK);
 
     private static final String GET_ALL_HOSTS = "SELECT * FROM hosts";
 
@@ -42,7 +42,7 @@ public class HostDAOH2Impl implements HostDAO {
     }
 
     @Override
-    public void findSorted() {
+    public void findAllSortedHosts() {
 
     }
 
