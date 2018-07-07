@@ -4,8 +4,8 @@ import lombok.*;
 
 import java.time.LocalDate;
 
+@AllArgsConstructor
 @Data
-@EqualsAndHashCode
 public abstract class Person {
 
     public static final String ID = "id";

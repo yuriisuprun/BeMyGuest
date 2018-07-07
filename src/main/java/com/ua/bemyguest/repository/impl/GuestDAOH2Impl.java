@@ -19,7 +19,7 @@ public class GuestDAOH2Impl implements GuestDAO {
             Guest.COUNTRY, Guest.BIRTH_DATE, Guest.LOCALITY, Guest.PREFERRED_LANGUAGE);
 
     private static final String GET_ALL_GUESTS = "SELECT * FROM guests " +
-            "INNER JOIN guest_detail ON guests.id = guest_details.guest_id";
+            "INNER JOIN guest_details ON guests.id = guest_details.guest_id";
 
     private static final String DELETE_GUEST_BY_ID = String.format("DELETE FROM guests WHERE %s=?", Guest.ID);
 
