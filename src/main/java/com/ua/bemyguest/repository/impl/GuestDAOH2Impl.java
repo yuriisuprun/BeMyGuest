@@ -7,6 +7,7 @@ import com.ua.bemyguest.repository.GuestDAO;
 import com.ua.bemyguest.model.Guest;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,7 +58,8 @@ public class GuestDAOH2Impl implements GuestDAO {
     }
 
     @Override
-    public void findSorted() {
+    public void findAllSortedGuests() {
+        List<Guest> sortedResult = new ArrayList<>();
 
     }
 
@@ -93,8 +95,20 @@ public class GuestDAOH2Impl implements GuestDAO {
         List<Guest> result = new ArrayList<>();
         try {
             connection = getInstance().getConnection();
-            stmt = connection.createStatement();
-            rs = stmt.executeQuery(GET_ALL_GUESTS);
+            pst = connection.prepareStatement(GET_ALL_GUESTS);
+            rs = pst.executeQuery(GET_ALL_GUESTS);
+            while (rs.next()){
+                Guest guest = Guest.builder().build();
+                guest.setId(rs.getInt(Guest.ID));
+                guest.setFirstName(rs.getString(Guest.FIRST_NAME));
+                guest.setLastName(rs.getString(Guest.LAST_NAME));
+                guest.setEmail(rs.getString(Guest.EMAIL));
+                guest.setPhoneNumber(rs.getString(Guest.PHONE_NUMBER));
+                guest.setCountry(rs.getString(Guest.COUNTRY));
+                guest.setBirthDate(rs.getDate(Guest.BIRTH_DATE).toLocalDate());
+                guest.setLocality(rs.getString(Guest.LOCALITY));
+                guest.setPreferredLanguage(rs.getString(Guest.PREFERRED_LANGUAGE));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
