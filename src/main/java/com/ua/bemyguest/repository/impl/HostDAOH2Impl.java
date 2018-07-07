@@ -79,7 +79,7 @@ public class HostDAOH2Impl implements HostDAO {
             stmt = connection.createStatement();
             rs = stmt.executeQuery(GET_ALL_HOSTS);
             while (rs.next()) {
-                Host host = Host.newBuilder().build();
+                Host host = Host.builder().build();
                 host.setId(rs.getInt(Host.ID));
                 host.setFirstName(rs.getString(Host.FIRST_NAME));
                 host.setLastName(rs.getString(Host.LAST_NAME));

@@ -55,18 +55,18 @@ public class Init {
             Guest.PREFERRED_LANGUAGE + " VARCHAR(255)" +
             ");";
 
+    private static final String CREATE_GUEST_DETAILS_TABLE = "CREATE TABLE IF NOT EXISTS guest_details (" +
+            GuestDetail.ID + " INT(11) PRIMARY KEY AUTO_INCREMENT," +
+            GuestDetail.REVIEW + " VARCHAR(255)," +
+            GuestDetail.GUEST_ID + " INT(11) REFERENCES guests(id)" +
+            ");";
+
     private static final String CREATE_BOOKINGS_TABLE = "CREATE TABLE IF NOT EXISTS bookings (" +
             Booking.ID + " INT(11) PRIMARY KEY AUTO_INCREMENT," +
             Booking.START_DATE + " DATE," +
             Booking.END_DATE + " DATE," +
             Booking.ACCOMMODATION_ID + " INT(11) REFERENCES accommodations(id)," +
             Booking.GUEST_ID + " INT(11) REFERENCES guests(id)" +
-            ");";
-
-    private static final String CREATE_GUEST_DETAILS_TABLE = "CREATE TABLE IF NOT EXISTS guest_details (" +
-            GuestDetail.ID + " INT(11) PRIMARY KEY AUTO_INCREMENT," +
-            GuestDetail.REVIEW + " VARCHAR(255)," +
-            GuestDetail.GUEST_ID + " INT(11) REFERENCES guests(id)" +
             ");";
 
     private void createTablesIfNotExist() {
