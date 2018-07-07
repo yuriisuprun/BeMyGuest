@@ -12,7 +12,7 @@ public class Guest extends Person {
     private String preferredLanguage;
 
     @Builder
-    public Guest(int id, String firstName, String lastName, String email, String phoneNumber,
+    private Guest(int id, String firstName, String lastName, String email, String phoneNumber,
                  String country, LocalDate birthDate, String locality, String preferredLanguage) {
         super(id, firstName, lastName, email, phoneNumber, country, birthDate, locality);
         this.preferredLanguage = preferredLanguage;
