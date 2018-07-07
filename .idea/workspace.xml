@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3216a406-4166-4cca-b278-6d4dc3614acd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../BeMyGuest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BeMyGuest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/repository/impl/GuestDAOH2Impl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/repository/impl/GuestDAOH2Impl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/repository/impl/HostDAOH2Impl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/repository/impl/HostDAOH2Impl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/service/Init.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/service/Init.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -21,8 +19,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
+            <state relative-caret-position="-646">
+              <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -162,10 +160,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/Main.java" />
         <option value="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/model/Guest.java" />
         <option value="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/model/Host.java" />
-        <option value="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/Main.java" />
         <option value="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/repository/impl/HostDAOH2Impl.java" />
         <option value="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/repository/impl/GuestDAOH2Impl.java" />
         <option value="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/service/Init.java" />
+        <option value="$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/Main.java" />
       </list>
     </option>
   </component>
@@ -394,7 +392,14 @@
       <option name="project" value="LOCAL" />
       <updated>1530946171476</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="removing a typo">
+      <created>1530947203187</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1530947203187</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -435,7 +440,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="lombok Builder with hierarchy" />
     <MESSAGE value="Builder was added to Host entity" />
-    <option name="LAST_COMMIT_MESSAGE" value="Builder was added to Host entity" />
+    <MESSAGE value="removing a typo" />
+    <option name="LAST_COMMIT_MESSAGE" value="removing a typo" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/Main.java">
@@ -803,8 +809,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../BeMyGuest/src/main/java/com/ua/bemyguest/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
+        <state relative-caret-position="-646">
+          <caret line="37" column="38" selection-start-line="37" selection-start-column="38" selection-end-line="37" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

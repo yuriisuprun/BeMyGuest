@@ -35,7 +35,7 @@ public class Main {
         /*HostDAO hostDAO = new HostDAOH2Impl();
         hostDAO.addHost(Host.newBuilder()
                 .setFirstName("David")
-                .setLastName("Schwimmer")
+                .setLastName("Hamilton")
                 .setEmail("dav@gmail.com")
                 .setPhoneNumber("0983688221")
                 .setCountry("Belgium")
