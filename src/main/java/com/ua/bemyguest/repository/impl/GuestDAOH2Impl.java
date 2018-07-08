@@ -29,7 +29,7 @@ public class GuestDAOH2Impl implements GuestDAO {
     private static final String DELETE_GUEST_BY_ID = String.format("DELETE FROM guests WHERE %s=?", Guest.ID);
 
     private Connection connection;
-    private PreparedStatement pst = null;
+    private PreparedStatement pst;
     private ResultSet rs;
 
     @Override

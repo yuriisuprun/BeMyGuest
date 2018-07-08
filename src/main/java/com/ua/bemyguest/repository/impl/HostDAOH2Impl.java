@@ -30,7 +30,7 @@ public class HostDAOH2Impl implements HostDAO {
     private static final String DELETE_HOST_BY_ID = String.format("DELETE FROM hosts WHERE %s=?;", Host.ID);
 
     private Connection connection;
-    private PreparedStatement pst = null;
+    private PreparedStatement pst;
     private ResultSet rs;
 
     @Override

@@ -1,8 +1,10 @@
 package com.ua.bemyguest.model;
 
+import lombok.Data;
+
 import java.time.LocalDate;
 
-
+@Data
 public class Booking {
 
     public static final String ID = "id";
