@@ -102,15 +102,15 @@ public class Main {
             e.printStackTrace();
         }*/
 
-        try {
-        guestDAO.addGuest(Guest.builder()
-                .preferredLanguage("Japanese")
-                .birthDate(LocalDate.parse("2000-02-22", DateTimeFormatter.ISO_DATE))
-                .lastName("Amm")
-                .build());
-    } catch (DuplicateGuestException e) {
-        e.printStackTrace();
-    }
+        /*try {
+            guestDAO.addGuest(Guest.builder()
+                    .preferredLanguage("Japanese")
+                    .birthDate(LocalDate.parse("2000-02-22", DateTimeFormatter.ISO_DATE))
+                    .lastName("Amm")
+                    .build());
+        } catch (DuplicateGuestException e) {
+            e.printStackTrace();
+        }*/
         System.out.println(guestDAO.findAllSortedGuests());
 
         /*Guest guest = Guest.builder()

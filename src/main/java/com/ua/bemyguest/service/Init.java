@@ -50,7 +50,7 @@ public class Init {
             Guest.EMAIL + " VARCHAR(255)," +
             Guest.PHONE_NUMBER + " VARCHAR(255)," +
             Guest.COUNTRY + " VARCHAR(255)," +
-            Guest.BIRTH_DATE + " DATE DEFAULT (GETDATE())," +
+            Guest.BIRTH_DATE + " DATE," +
             Guest.LOCALITY + " VARCHAR(255)," +
             Guest.PREFERRED_LANGUAGE + " VARCHAR(255)" +
             ");";
