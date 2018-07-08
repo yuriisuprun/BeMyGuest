@@ -13,7 +13,7 @@ public interface GuestDAO {
 
     Guest findGuestByLastName(String guestLastName) throws GuestIncorrectLastName;
 
-    void findAllSortedGuests();
+    List<Guest> findAllSortedGuests();
 
     void addGuest(Guest guest) throws DuplicateGuestException;
 
