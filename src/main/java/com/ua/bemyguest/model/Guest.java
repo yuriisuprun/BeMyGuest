@@ -5,6 +5,7 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Data
+@ToString(callSuper=true)
 public class Guest extends Person {
 
     public static final String PREFERRED_LANGUAGE = "preferred_language";

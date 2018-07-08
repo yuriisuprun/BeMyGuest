@@ -1,6 +1,8 @@
 package com.ua.bemyguest;
 
 import com.ua.bemyguest.exception.DuplicateGuestException;
+import com.ua.bemyguest.exception.GuestIncorrectId;
+import com.ua.bemyguest.exception.GuestIncorrectLastName;
 import com.ua.bemyguest.model.Guest;
 import com.ua.bemyguest.model.Host;
 import com.ua.bemyguest.repository.AccommodationDAO;
@@ -12,6 +14,9 @@ import com.ua.bemyguest.model.AccommodationType;
 import com.ua.bemyguest.repository.impl.GuestDAOH2Impl;
 import com.ua.bemyguest.repository.impl.HostDAOH2Impl;
 import com.ua.bemyguest.service.Init;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Main {
 
@@ -67,15 +72,55 @@ public class Main {
         System.out.println(accommodationDAO.getAllAccommodations());*/
 
         GuestDAO guestDAO = new GuestDAOH2Impl();
-        try {
+        /*try {
             guestDAO.addGuest(Guest.builder()
                     .preferredLanguage("Chinese")
+                    .lastName("Gug")
                     .build());
         } catch (DuplicateGuestException e) {
             e.printStackTrace();
         }
 
-        System.out.println(guestDAO.getAllGuests());
+        try {
+            guestDAO.addGuest(Guest.builder()
+                    .preferredLanguage("German")
+                    .lastName("Apf")
+                    .build());
+        } catch (DuplicateGuestException e) {
+            e.printStackTrace();
+        }*/
+
+        LocalDate localDate = LocalDate.now();
+
+        /*try {
+            guestDAO.addGuest(Guest.builder()
+                    .preferredLanguage("German")
+                    .birthDate(localDate)
+                    .lastName("Zog")
+                    .build());
+        } catch (DuplicateGuestException e) {
+            e.printStackTrace();
+        }*/
+
+        try {
+        guestDAO.addGuest(Guest.builder()
+                .preferredLanguage("Japanese")
+                .birthDate(LocalDate.parse("2000-02-22", DateTimeFormatter.ISO_DATE))
+                .lastName("Amm")
+                .build());
+    } catch (DuplicateGuestException e) {
+        e.printStackTrace();
+    }
+        System.out.println(guestDAO.findAllSortedGuests());
+
+        /*Guest guest = Guest.builder()
+                .id(1)
+                .firstName("Jennifer")
+                .lastName("Lorry")
+                .birthDate(LocalDate.parse("2012-02-22", DateTimeFormatter.ISO_DATE))
+                .build();
+        guestDAO.updateGuest(guest);*/
+
 
         HostDAO hostDAO = new HostDAOH2Impl();
         Host host = Host.builder()
@@ -90,3 +135,4 @@ public class Main {
                 .build();
     }
 }
+
