@@ -1,5 +1,8 @@
 package com.ua.bemyguest.model;
 
+import lombok.Data;
+
+@Data
 public class GuestDetail {
 
     public static final String ID = "id";
