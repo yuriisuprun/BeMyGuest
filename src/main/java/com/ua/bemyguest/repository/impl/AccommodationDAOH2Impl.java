@@ -6,7 +6,6 @@ import com.ua.bemyguest.model.AccommodationType;
 import com.ua.bemyguest.model.Host;
 import com.ua.bemyguest.repository.AccommodationDAO;
 import com.ua.bemyguest.model.Accommodation;
-import sun.plugin.javascript.navig.Array;
 
 import java.sql.*;
 import java.util.ArrayList;

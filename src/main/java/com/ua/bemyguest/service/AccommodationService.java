@@ -1,7 +1,11 @@
 package com.ua.bemyguest.service;
 
+import com.ua.bemyguest.exception.AccommodationIncorrectId;
+import com.ua.bemyguest.exception.AccommodationIncorrectTitle;
 import com.ua.bemyguest.model.Accommodation;
 import com.ua.bemyguest.repository.impl.AccommodationDAOH2Impl;
+
+import java.util.List;
 
 public class AccommodationService {
 
@@ -11,37 +15,35 @@ public class AccommodationService {
         accommodationDAOH2 = AccommodationDAOH2Impl.instance();
     }
 
+    public void findAccommodationById(int accommodationId) throws AccommodationIncorrectId{
+        accommodationDAOH2.findAccommodationById(accommodationId);
+    }
+
+    public void findAccommodationByTitle(String accommodationTitle) throws AccommodationIncorrectTitle {
+        accommodationDAOH2.findAccommodationByTitle(accommodationTitle);
+    }
+    
+    public List<Accommodation> findSortedAccommodations(){
+        return accommodationDAOH2.findSortedAccommodations();
+    }
+
     public void addAccommodation(Accommodation accommodation){
         accommodationDAOH2.addAccommodation(accommodation);
     }
 
-    public void removeDriverById(int accommodationId){
+    public List<Accommodation> getAllAccommodations(){
+        return accommodationDAOH2.getAllAccommodations();
+    }
+
+    public void updateAccommodation(Accommodation accommodation){
+        accommodationDAOH2.updateAccommodation(accommodation);
+    }
+
+    public void deleteAccommodation(int accommodationId) throws AccommodationIncorrectId{
         try {
             accommodationDAOH2.deleteAccommodation(accommodationId);
-        } catch (DriverNotFoundException e) {
+        } catch (AccommodationIncorrectId e) {
             e.printStackTrace();
-        } catch (DriverIncorrectId driverIncorrectId) {
-            driverIncorrectId.printStackTrace();
         }
-    }
-
-    public List<Driver> getAllDrivers() throws DuplicateDriverException {
-        return driverDAOH2.getAllDrivers();
-    }
-
-    public Driver getDriverById(int carId) throws DriverIncorrectId {
-        return driverDAOH2.getDriverById(carId);
-    }
-
-    public void updateDriver(Driver driver){
-        driverDAOH2.updateDriver(driver);
-    }
-
-    public void removeAllDriver(){
-        driverDAOH2.deleteAll();
-    }
-
-    public Driver findByLastName(String name){
-        return driverDAOH2.findByLastName(name);
     }
 }
