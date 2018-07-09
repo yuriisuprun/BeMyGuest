@@ -23,7 +23,7 @@ public class HostDAOH2Impl implements HostDAO {
 
     private static final String FIND_ALL_SORTED_HOSTS = "SELECT * FROM hosts ORDER BY last_name DESC";
 
-    private static final String UPDATE_HOSTS = String.format("UPDATE hosts SET %s = ?, %s = ?, %s = ?, %s = ?, " +
+    private static final String UPDATE_HOST = String.format("UPDATE hosts SET %s = ?, %s = ?, %s = ?, %s = ?, " +
                     "%s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?", Host.FIRST_NAME, Host.LAST_NAME, Host.EMAIL,
             Host.PHONE_NUMBER, Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.JOIN_DATE, Host.WORK, Host.ID);
 
@@ -150,7 +150,7 @@ public class HostDAOH2Impl implements HostDAO {
     public void updateHost(Host host) {
         try {
             connection = getInstance().getConnection();
-            pst = connection.prepareStatement(UPDATE_HOSTS);
+            pst = connection.prepareStatement(UPDATE_HOST);
             pst.setString(1, host.getFirstName());
             pst.setString(2, host.getLastName());
             pst.setString(3, host.getEmail());
