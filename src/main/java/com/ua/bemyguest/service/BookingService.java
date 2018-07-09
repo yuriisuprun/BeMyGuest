@@ -44,4 +44,10 @@ public class BookingService {
     public void deleteBookingById(int bookingId) throws BookingIncorrectId{
         bookingDAOH2.deleteBookingById(bookingId);
     }
+
+    public void printBookings(List<Booking> bookings){
+        for (Booking booking : getAllBookings()) {
+            System.out.println(booking);
+        }
+    }
 }
