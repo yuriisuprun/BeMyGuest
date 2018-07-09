@@ -43,4 +43,10 @@ public class GuestService {
     public void deleteGuestById(int guestId) throws GuestIncorrectId{
         guestDAOH2.deleteGuestById(guestId);
     }
+
+    public void printGuests(List<Guest> guests){
+        for (Guest guest : getAllGuests()) {
+            System.out.println(guest);
+        }
+    }
 }

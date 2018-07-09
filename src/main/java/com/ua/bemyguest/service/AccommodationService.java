@@ -46,4 +46,10 @@ public class AccommodationService {
             e.printStackTrace();
         }
     }
+
+    public void printAccommodations(List<Accommodation> accommodations){
+        for (Accommodation accommodation : getAllAccommodations()) {
+            System.out.println(accommodation);
+        }
+    }
 }

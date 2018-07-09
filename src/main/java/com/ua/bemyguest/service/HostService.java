@@ -43,4 +43,10 @@ public class HostService {
     public void deleteHostById(int hostId) throws HostIncorrectId{
         hostDAOH2.deleteHostById(hostId);
     }
+
+    public void printHosts(List<Host> hosts){
+        for (Host host : getAllHosts()) {
+            System.out.println(host);
+        }
+    }
 }
