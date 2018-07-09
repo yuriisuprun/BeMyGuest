@@ -34,6 +34,15 @@ public class BookingDAOH2Impl implements BookingDAO {
     private PreparedStatement pst;
     private ResultSet rs;
 
+    private static BookingDAOH2Impl instance;
+
+    public static BookingDAOH2Impl instance() {
+        if (instance == null) {
+            instance = new BookingDAOH2Impl();
+        }
+        return instance;
+    }
+
     @Override
     public Booking findBookingById(int bookingId) throws BookingIncorrectId {
         Booking booking = null;

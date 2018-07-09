@@ -32,6 +32,15 @@ public class GuestDAOH2Impl implements GuestDAO {
     private PreparedStatement pst;
     private ResultSet rs;
 
+    private static GuestDAOH2Impl instance;
+
+    public static GuestDAOH2Impl instance() {
+        if (instance == null) {
+            instance = new GuestDAOH2Impl();
+        }
+        return instance;
+    }
+
     @Override
     public Guest findGuestById(int guestId) throws GuestIncorrectId{
         Guest guest = null;
