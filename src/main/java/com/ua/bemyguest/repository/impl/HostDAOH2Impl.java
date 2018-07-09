@@ -33,6 +33,15 @@ public class HostDAOH2Impl implements HostDAO {
     private PreparedStatement pst;
     private ResultSet rs;
 
+    private static HostDAOH2Impl instance;
+
+    public static HostDAOH2Impl instance() {
+        if (instance == null) {
+            instance = new HostDAOH2Impl();
+        }
+        return instance;
+    }
+
     @Override
     public Host findHostById(int hostId) throws HostIncorrectId{
         Host host = null;
