@@ -1,16 +1,18 @@
 package com.ua.bemyguest.repository;
 
+import com.ua.bemyguest.exception.AccommodationIncorrectId;
+import com.ua.bemyguest.exception.AccommodationIncorrectTitle;
 import com.ua.bemyguest.model.Accommodation;
 
 import java.util.List;
 
 public interface AccommodationDAO {
 
-    Accommodation findAccommodationById(int accommodationId);
+    Accommodation findAccommodationById(int accommodationId) throws AccommodationIncorrectId;
 
-    Accommodation findAccommodationByName(String accommodationName);
+    Accommodation findAccommodationByTitle(String accommodationTitle) throws AccommodationIncorrectTitle;
 
-    void findSorted();
+    List<Accommodation> findSortedAccommodations();
 
     void addAccommodation(Accommodation accommodation);
 
@@ -18,5 +20,5 @@ public interface AccommodationDAO {
 
     void updateAccommodation(Accommodation accommodation);
 
-    void deleteAccommodation(int accommodationId);
+    void deleteAccommodation(int accommodationId) throws AccommodationIncorrectId;;
 }
