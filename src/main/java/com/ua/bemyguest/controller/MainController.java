@@ -109,11 +109,11 @@ public class MainController {
     private void showMenu() {
         System.out.println("Make your choice: ");
         System.out.println("1. Show available accommodations.");
-        System.out.println("2. Add new Cook.");
-        System.out.println("3. Remove Cook.");
-        System.out.println("4. Show list of Bartenders");
-        System.out.println("5. Add new Bartender.");
-        System.out.println("6. Remove Bartender");
+        System.out.println("2. Add new accommodation.");
+        System.out.println("3. Find accommodation by id.");
+        System.out.println("4. Find accommodation by title.");
+        System.out.println("5. Update accommodation.");
+        System.out.println("6. Delete accommodation.");
         System.out.println("7. Show list of Waiters");
         System.out.println("8. Add new Waiter");
         System.out.println("9. Remove Waiter");
