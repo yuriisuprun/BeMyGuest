@@ -2,12 +2,14 @@ package com.ua.bemyguest.model;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
 @Data
+@ToString(callSuper=true)
 public class Host extends Person{
 
     public static final String JOIN_DATE = "join_date";

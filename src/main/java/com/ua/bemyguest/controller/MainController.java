@@ -153,7 +153,7 @@ public class MainController {
                 break;
             }
             case 7: {
-                showGuestDetails();
+                hostController.addNewHost();
                 break;
             }
             case 8: {

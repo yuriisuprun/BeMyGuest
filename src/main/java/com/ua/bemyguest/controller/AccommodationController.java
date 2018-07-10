@@ -26,25 +26,26 @@ public class AccommodationController {
         // filling of the accommodation object
         System.out.println("\nEnter accommodation's data:");
         System.out.println("Enter the title of the accommodation:");
-        String title = scanner.next();
+        String title = scanner.nextLine();
         System.out.println("Enter the locality of the accommodation:");
-        String locality = scanner.next();
+        String locality = scanner.nextLine();
         System.out.println("Enter the country of the accommodation:");
-        String country = scanner.next();
+        String country = scanner.nextLine();
         System.out.println("Enter the address of the accommodation:");
-        String address = scanner.next();
+        String address = scanner.nextLine();
         System.out.println("Enter host's id:");
         int hostId = scanner.nextInt();
         System.out.println("Enter accommodation type:");
         String accommodationType = scanner.next();
         System.out.println("Enter a description of the accommodation:");
         String description = scanner.next();
-        System.out.println("Enter accommodation type:");
+        System.out.println("Enter accommodation price:");
         double price = scanner.nextDouble();
         accommodation.setTitle(title);
         accommodation.setLocality(locality);
         accommodation.setCountry(country);
         accommodation.setAddress(address);
+        System.out.println("The accommodation was created.");
         try {
             accommodation.setHost(hostService.findHostById(hostId));
         } catch (HostIncorrectId hostIncorrectId) {
