@@ -15,8 +15,30 @@ public class AccommodationController {
     private AccommodationService accommodationService = new AccommodationService();
     private HostService hostService = new HostService();
 
-    public void showAccommodations() {
-        accommodationService.printAccommodations(accommodationService.getAllAccommodations());
+    public void findAccommodationById(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter an id of the accommodation:");
+        int accommodationId = scanner.nextInt();
+        try {
+            System.out.println(accommodationService.findAccommodationById(accommodationId));
+        } catch (AccommodationIncorrectId accommodationIncorrectId) {
+            accommodationIncorrectId.printStackTrace();
+        }
+    }
+
+    public void findAccommodationByTitle(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a title of the accommodation:");
+        String accommodationTitle = scanner.next();
+        try {
+            System.out.println(accommodationService.findAccommodationByTitle(accommodationTitle));
+        } catch (AccommodationIncorrectTitle accommodationIncorrectTitle) {
+            accommodationIncorrectTitle.printStackTrace();
+        }
+    }
+
+    public void printSortedAccommodations(){
+        accommodationService.printAccommodations(accommodationService.findSortedAccommodations());
     }
 
     public void addNewAccommodation() {
@@ -57,30 +79,8 @@ public class AccommodationController {
         accommodationService.addAccommodation(accommodation);
     }
 
-    public void findAccommodationById(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter an id of the accommodation:");
-        int accommodationId = scanner.nextInt();
-        try {
-            System.out.println(accommodationService.findAccommodationById(accommodationId));
-        } catch (AccommodationIncorrectId accommodationIncorrectId) {
-            accommodationIncorrectId.printStackTrace();
-        }
-    }
-
-    public void findAccommodationByTitle(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a title of the accommodation:");
-        String accommodationTitle = scanner.next();
-        try {
-            System.out.println(accommodationService.findAccommodationByTitle(accommodationTitle));
-        } catch (AccommodationIncorrectTitle accommodationIncorrectTitle) {
-            accommodationIncorrectTitle.printStackTrace();
-        }
-    }
-
-    public void printSortedAccommodations(){
-        accommodationService.printAccommodations(accommodationService.findSortedAccommodations());
+    public void showAccommodations() {
+        accommodationService.printAccommodations(accommodationService.getAllAccommodations());
     }
 
     public void updateAccommodation(){

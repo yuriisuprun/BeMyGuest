@@ -24,8 +24,8 @@ public class HostService {
         return hostDAOH2.findHostByLastName(hostLastName);
     }
 
-    public List<Host> findAllSortedHosts(){
-        return hostDAOH2.findAllSortedHosts();
+    public List<Host> findSortedHosts(){
+        return hostDAOH2.findSortedHosts();
     }
 
     public void addHost(Host host) throws DuplicateHostException{

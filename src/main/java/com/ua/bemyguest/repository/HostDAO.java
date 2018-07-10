@@ -13,7 +13,7 @@ public interface HostDAO {
 
     Host findHostByLastName(String hostLastName) throws HostIncorrectLastName;
 
-    List<Host> findAllSortedHosts();
+    List<Host> findSortedHosts();
 
     void addHost(Host host) throws DuplicateHostException;
 

@@ -1,6 +1,7 @@
 package com.ua.bemyguest.controller;
 
 import com.ua.bemyguest.exception.HostIncorrectId;
+import com.ua.bemyguest.exception.HostIncorrectLastName;
 import com.ua.bemyguest.model.Host;
 import com.ua.bemyguest.service.HostService;
 
@@ -9,6 +10,32 @@ import java.util.Scanner;
 public class HostController {
 
     private HostService hostService = new HostService();
+
+    public void findHostById() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter an id of the host:");
+        int hostId = scanner.nextInt();
+        try {
+            System.out.println(hostService.findHostById(hostId));
+        } catch (HostIncorrectId hostIncorrectId) {
+            hostIncorrectId.printStackTrace();
+        }
+    }
+
+    public void findHostByLastName() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter last name of the host:");
+        String lastName = scanner.nextLine();
+        try {
+            System.out.println(hostService.findHostByLastName(lastName));
+        } catch (HostIncorrectLastName hostIncorrectLastName) {
+            hostIncorrectLastName.printStackTrace();
+        }
+    }
+
+    public void findAllSortedHosts() {
+        hostService.printHosts(hostService.findSortedHosts());
+    }
 
     public void addNewHost() {
         Host host = Host.builder().build();
@@ -33,22 +60,26 @@ public class HostController {
         System.out.println("Enter accommodations of the host");
 
 
-
         host.setFirstName(firstName);
     }
 
-    public void findHostByLastName(){
+    public void printHosts() {
+        hostService.printHosts(hostService.getAllHosts());
+    }
+
+    public void updateHost() {
+
+    }
+
+    public void deleteHostById(int hostId) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter an id of the host:");
-        int hostId = scanner.nextInt();
+        System.out.println("Enter host's id for deleting:");
+        int id = scanner.nextInt();
         try {
-            System.out.println(hostService.findHostById(hostId));
+            hostService.deleteHostById(id);
+            System.out.println("Host deleted.");
         } catch (HostIncorrectId hostIncorrectId) {
             hostIncorrectId.printStackTrace();
         }
-    }
-
-    public void findAllSortedHosts(){
-
     }
 }
