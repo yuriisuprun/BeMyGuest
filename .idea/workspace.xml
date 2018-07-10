@@ -3,14 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3216a406-4166-4cca-b278-6d4dc3614acd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/AccommodationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/AccommodationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/BookingController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/HostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/HostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/HostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/HostDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/impl/HostDAOH2Impl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/impl/HostDAOH2Impl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/HostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/HostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestDetailController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -60,23 +54,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookingService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/BookingService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="20" column="53" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GuestController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GuestController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="47" />
+            <state relative-caret-position="60">
+              <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="64" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1277#1278#0" expanded="true" />
@@ -88,32 +70,56 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Booking.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/model/Booking.java">
+      <file leaf-file-name="GuestDetailController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestDetailController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Host.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/model/Host.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="298">
+              <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1019#1020#0" expanded="true" />
+                <element signature="e#1036#1037#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/Main.java">
+      <file leaf-file-name="GuestDetail.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/model/GuestDetail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="748">
-              <caret line="64" column="30" selection-start-line="64" selection-start-column="30" selection-end-line="64" selection-end-column="30" />
+            <state relative-caret-position="68">
+              <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GuestDetailService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/GuestDetailService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+              <folding>
+                <element signature="e#342#343#0" expanded="true" />
+                <element signature="e#408#409#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GuestDetailDAO.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/GuestDetailDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="19" selection-end-column="80" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Booking.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/model/Booking.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -153,7 +159,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/GuestDetailDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/impl/GuestDetailDAOH2Impl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/impl/AccommodationDAOH2Impl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/AccommodationService.java" />
@@ -204,6 +209,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/BookingController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/HostController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestDetailController.java" />
       </list>
     </option>
   </component>
@@ -311,6 +317,15 @@
               <item name="bemyguest" type="462c0819:PsiDirectoryNode" />
               <item name="repository" type="462c0819:PsiDirectoryNode" />
               <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BeMyGuest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BeMyGuest" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="bemyguest" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="BeMyGuest" type="b2602c69:ProjectViewProjectNode" />
@@ -540,7 +555,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531241285613</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Guest Controller">
+      <created>1531247511833</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1531247511833</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -559,7 +581,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32850242" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.33656958" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.33656958" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -594,7 +616,8 @@
     <MESSAGE value="AccommodationController is done" />
     <MESSAGE value="Editing MainController" />
     <MESSAGE value="next" />
-    <option name="LAST_COMMIT_MESSAGE" value="next" />
+    <MESSAGE value="Guest Controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="Guest Controller" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -723,13 +746,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/exception/GuestDetailIncorrectLastName.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/model/GuestDetail.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/exception/BookingIncorrectId.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -780,20 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/GuestDetailDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="19" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/GuestDetailService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="44" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/GuestService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -805,13 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="48" column="35" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestDetailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -963,16 +958,53 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/repository/GuestDetailDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="19" selection-end-column="80" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/service/GuestDetailService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="82" column="12" selection-start-line="82" selection-start-column="12" selection-end-line="82" selection-end-column="47" />
+        <state relative-caret-position="60">
+          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="64" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1277#1278#0" expanded="true" />
             <element signature="e#1304#1305#0" expanded="true" />
             <element signature="e#2491#2492#0" expanded="true" />
             <element signature="e#2518#2519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/model/GuestDetail.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="5" selection-start-line="4" selection-start-column="5" selection-end-line="4" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/ua/bemyguest/controller/GuestDetailController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="34" column="40" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1019#1020#0" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
           </folding>
         </state>
       </provider>
