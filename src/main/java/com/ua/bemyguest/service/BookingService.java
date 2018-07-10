@@ -17,8 +17,8 @@ public class BookingService {
         bookingDAOH2 = BookingDAOH2Impl.instance();
     }
 
-    public void findBookingById(int bookingId) throws BookingIncorrectId{
-
+    public Booking findBookingById(int bookingId) throws BookingIncorrectId{
+        return bookingDAOH2.findBookingById(bookingId);
     }
 
     public Booking findBookingByStartDate(LocalDate bookingStartDate) throws BookingIncorrectStartDate{

@@ -71,7 +71,7 @@ public class HostDAOH2Impl implements HostDAO {
     }
 
     @Override
-    public List<Host> findAllSortedHosts() {
+    public List<Host> findSortedHosts() {
         List<Host> sortedResult = new ArrayList<>();
         try {
             connection = getInstance().getConnection();

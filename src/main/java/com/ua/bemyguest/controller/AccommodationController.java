@@ -15,47 +15,6 @@ public class AccommodationController {
     private AccommodationService accommodationService = new AccommodationService();
     private HostService hostService = new HostService();
 
-    public void showAccommodations() {
-        accommodationService.printAccommodations(accommodationService.getAllAccommodations());
-    }
-
-    public void addNewAccommodation() {
-        Accommodation accommodation = new Accommodation();
-        Scanner scanner = new Scanner(System.in);
-
-        // filling of the accommodation object
-        System.out.println("\nEnter accommodation's data:");
-        System.out.println("Enter the title of the accommodation:");
-        String title = scanner.next();
-        System.out.println("Enter the locality of the accommodation:");
-        String locality = scanner.next();
-        System.out.println("Enter the country of the accommodation:");
-        String country = scanner.next();
-        System.out.println("Enter the address of the accommodation:");
-        String address = scanner.next();
-        System.out.println("Enter host's id:");
-        int hostId = scanner.nextInt();
-        System.out.println("Enter accommodation type:");
-        String accommodationType = scanner.next();
-        System.out.println("Enter a description of the accommodation:");
-        String description = scanner.next();
-        System.out.println("Enter accommodation type:");
-        double price = scanner.nextDouble();
-        accommodation.setTitle(title);
-        accommodation.setLocality(locality);
-        accommodation.setCountry(country);
-        accommodation.setAddress(address);
-        try {
-            accommodation.setHost(hostService.findHostById(hostId));
-        } catch (HostIncorrectId hostIncorrectId) {
-            hostIncorrectId.printStackTrace();
-        }
-        accommodation.setAccommodationType(AccommodationType.valueOf(accommodationType));
-        accommodation.setDescription(description);
-        accommodation.setPrice(price);
-        accommodationService.addAccommodation(accommodation);
-    }
-
     public void findAccommodationById(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter an id of the accommodation:");
@@ -80,6 +39,48 @@ public class AccommodationController {
 
     public void printSortedAccommodations(){
         accommodationService.printAccommodations(accommodationService.findSortedAccommodations());
+    }
+
+    public void addNewAccommodation() {
+        Accommodation accommodation = new Accommodation();
+        Scanner scanner = new Scanner(System.in);
+
+        // filling of the accommodation object
+        System.out.println("\nEnter accommodation's data:");
+        System.out.println("Enter the title of the accommodation:");
+        String title = scanner.nextLine();
+        System.out.println("Enter the locality of the accommodation:");
+        String locality = scanner.nextLine();
+        System.out.println("Enter the country of the accommodation:");
+        String country = scanner.nextLine();
+        System.out.println("Enter the address of the accommodation:");
+        String address = scanner.nextLine();
+        System.out.println("Enter host's id:");
+        int hostId = scanner.nextInt();
+        System.out.println("Enter accommodation type:");
+        String accommodationType = scanner.next();
+        System.out.println("Enter a description of the accommodation:");
+        String description = scanner.next();
+        System.out.println("Enter accommodation price:");
+        double price = scanner.nextDouble();
+        accommodation.setTitle(title);
+        accommodation.setLocality(locality);
+        accommodation.setCountry(country);
+        accommodation.setAddress(address);
+        System.out.println("The accommodation was created.");
+        try {
+            accommodation.setHost(hostService.findHostById(hostId));
+        } catch (HostIncorrectId hostIncorrectId) {
+            hostIncorrectId.printStackTrace();
+        }
+        accommodation.setAccommodationType(AccommodationType.valueOf(accommodationType));
+        accommodation.setDescription(description);
+        accommodation.setPrice(price);
+        accommodationService.addAccommodation(accommodation);
+    }
+
+    public void showAccommodations() {
+        accommodationService.printAccommodations(accommodationService.getAllAccommodations());
     }
 
     public void updateAccommodation(){
