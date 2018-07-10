@@ -86,6 +86,7 @@ public class MainController {
     public static final String CYAN_BACKGROUND_BRIGHT = "\033[0;106m";  // CYAN
     public static final String WHITE_BACKGROUND_BRIGHT = "\033[0;107m";   // WHITE
 
+    private AccommodationService accommodationService = new AccommodationService();
     private BookingService bookingService = new BookingService();
     private GuestDetailService guestDetailService = new GuestDetailService();
     private GuestService guestService = new GuestService();
@@ -140,15 +141,15 @@ public class MainController {
                 break;
             }
             case 4: {
-                findAccommodationByTitle();
+                accommodationController.findAccommodationByTitle();
                 break;
             }
             case 5: {
-
+                accommodationController.updateAccommodation();
                 break;
             }
             case 6: {
-
+                accommodationController.deleteAccommodation();
                 break;
             }
             case 7: {
@@ -185,40 +186,6 @@ public class MainController {
                 System.out.println("Wrong choice!");
             }
         }
-    }
-
-
-
-
-
-    private void findAccommodationByTitle(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a title of the accommodation:");
-        String accommodationTitle = scanner.next();
-        try {
-            System.out.println(accommodationService.findAccommodationByTitle(accommodationTitle));
-        } catch (AccommodationIncorrectTitle accommodationIncorrectTitle) {
-            accommodationIncorrectTitle.printStackTrace();
-        }
-    }
-
-    private void printSortedAccommodations(){
-        accommodationService.printAccommodations(accommodationService.findSortedAccommodations());
-    }
-
-    public void updateAccommodation(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter accommodation's id you want to update");
-        int accommodationId = scanner.nextInt();
-        try {
-            accommodationService.updateAccommodation(accommodationService.findAccommodationById(accommodationId));
-        } catch (AccommodationIncorrectId accommodationIncorrectId) {
-            accommodationIncorrectId.printStackTrace();
-        }
-    }
-
-    public void deleteAccommodation(int accommodationId) {
-
     }
 
     private void showBookings() {
