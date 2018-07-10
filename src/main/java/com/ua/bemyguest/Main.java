@@ -1,5 +1,6 @@
 package com.ua.bemyguest;
 
+import com.ua.bemyguest.controller.MainController;
 import com.ua.bemyguest.exception.DuplicateGuestException;
 import com.ua.bemyguest.exception.GuestIncorrectId;
 import com.ua.bemyguest.exception.GuestIncorrectLastName;
@@ -22,8 +23,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*MainController mainController = new MainController();
-        mainController.doWork();*/
+        MainController mainController = new MainController();
+        mainController.doWork();
     }
 }
 

@@ -15,12 +15,12 @@ public class AccommodationService {
         accommodationDAOH2 = AccommodationDAOH2Impl.instance();
     }
 
-    public void findAccommodationById(int accommodationId) throws AccommodationIncorrectId{
-        accommodationDAOH2.findAccommodationById(accommodationId);
+    public Accommodation findAccommodationById(int accommodationId) throws AccommodationIncorrectId{
+        return accommodationDAOH2.findAccommodationById(accommodationId);
     }
 
-    public void findAccommodationByTitle(String accommodationTitle) throws AccommodationIncorrectTitle {
-        accommodationDAOH2.findAccommodationByTitle(accommodationTitle);
+    public Accommodation findAccommodationByTitle(String accommodationTitle) throws AccommodationIncorrectTitle {
+        return accommodationDAOH2.findAccommodationByTitle(accommodationTitle);
     }
     
     public List<Accommodation> findSortedAccommodations(){

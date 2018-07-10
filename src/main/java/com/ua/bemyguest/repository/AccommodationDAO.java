@@ -20,5 +20,5 @@ public interface AccommodationDAO {
 
     void updateAccommodation(Accommodation accommodation);
 
-    void deleteAccommodation(int accommodationId) throws AccommodationIncorrectId;;
+    void deleteAccommodation(int accommodationId) throws AccommodationIncorrectId;
 }
