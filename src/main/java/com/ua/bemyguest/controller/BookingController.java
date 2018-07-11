@@ -34,7 +34,7 @@ public class BookingController {
         }
     }
 
-    public void findAllSortedBookings(){
+    public void printAllSortedBookings(){
         bookingService.printBookings(bookingService.findAllSortedBookings());
     }
 

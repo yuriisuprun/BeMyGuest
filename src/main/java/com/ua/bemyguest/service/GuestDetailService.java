@@ -39,7 +39,7 @@ public class GuestDetailService {
     }
 
     public void printGuestDetails(List<GuestDetail> guestDetails){
-        for (GuestDetail guestDetail : getAllGuestDetails()) {
+        for (GuestDetail guestDetail : guestDetails) {
             System.out.println(guestDetail);
         }
     }
