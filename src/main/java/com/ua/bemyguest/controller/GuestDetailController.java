@@ -38,6 +38,6 @@ public class GuestDetailController {
         } catch (GuestDetailIncorrectId guestDetailIncorrectId) {
             guestDetailIncorrectId.printStackTrace();
         }
-        System.out.println("Guest detail deleted.");
+        System.out.println("The guest detail deleted.");
     }
 }

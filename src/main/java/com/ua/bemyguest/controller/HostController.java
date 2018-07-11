@@ -82,9 +82,13 @@ public class HostController {
         int languagesSize = scanner.nextInt();
         for (int i = 0; i < languagesSize; i++) {
             System.out.println("Enter the name of language:");
-            String language = scanner.nextLine();
+            String language = scanner.next();
             languages.add(language);
         }
+        System.out.println("Enter the join date in the format: YYYY-MM-DD:");
+        String joinDate = scanner.nextLine();
+        System.out.println("Enter the host's place of work and the position:");
+        String work = scanner.nextLine();
         host.setFirstName(firstName);
         host.setLastName(lastName);
         host.setEmail(email);
@@ -94,6 +98,8 @@ public class HostController {
         host.setLocality(locality);
         host.setAccommodations(accommodations);
         host.setLanguages(languages);
+        host.setJoinDate(LocalDate.parse(joinDate));
+        host.setWork(work);
         try {
             hostService.addHost(host);
             System.out.println("The host was added successfully!");
@@ -116,7 +122,7 @@ public class HostController {
         int id = scanner.nextInt();
         try {
             hostService.deleteHostById(id);
-            System.out.println("Host deleted.");
+            System.out.println("The host deleted.");
         } catch (HostIncorrectId hostIncorrectId) {
             hostIncorrectId.printStackTrace();
         }

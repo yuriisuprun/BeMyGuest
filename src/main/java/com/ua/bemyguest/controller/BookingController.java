@@ -67,8 +67,8 @@ public class BookingController {
         try {
             bookingService.deleteBookingById(id);
         } catch (BookingIncorrectId bookingIncorrectId) {
-            bookingIncorrectId.printStackTrace();
+            System.err.println("Incorrect id!");
         }
-        System.out.println("Booking deleted.");
+        System.out.println("The booking deleted.");
     }
 }

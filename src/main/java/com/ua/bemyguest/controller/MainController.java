@@ -124,7 +124,7 @@ public class MainController {
                 break;
             }
             case 11: {
-                hostController.deleteHostById();
+                hostController.findHostById();
                 break;
             }
             case 12: {

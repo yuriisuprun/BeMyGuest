@@ -119,6 +119,6 @@ public class GuestController {
         } catch (GuestIncorrectId guestIncorrectId) {
             guestIncorrectId.printStackTrace();
         }
-        System.out.println("Guest deleted.");
+        System.out.println("The guest deleted.");
     }
 }
