@@ -66,9 +66,9 @@ public class BookingController {
         int id = scanner.nextInt();
         try {
             bookingService.deleteBookingById(id);
+            System.out.println("The booking deleted.");
         } catch (BookingIncorrectId bookingIncorrectId) {
             System.err.println("Incorrect id!");
         }
-        System.out.println("The booking deleted.");
     }
 }

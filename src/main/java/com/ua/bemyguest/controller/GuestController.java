@@ -116,9 +116,9 @@ public class GuestController {
         int id = scanner.nextInt();
         try {
             guestService.deleteGuestById(id);
+            System.out.println("The guest deleted.");
         } catch (GuestIncorrectId guestIncorrectId) {
-            guestIncorrectId.printStackTrace();
+            System.err.println("Wrong id!");
         }
-        System.out.println("The guest deleted.");
     }
 }

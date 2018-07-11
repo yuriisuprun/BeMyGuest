@@ -35,9 +35,9 @@ public class GuestDetailController {
         int id = scanner.nextInt();
         try {
             guestDetailService.deleteGuestDetailById(id);
+            System.out.println("The guest detail deleted.");
         } catch (GuestDetailIncorrectId guestDetailIncorrectId) {
-            guestDetailIncorrectId.printStackTrace();
+            System.err.println("Wrong id!");
         }
-        System.out.println("The guest detail deleted.");
     }
 }
