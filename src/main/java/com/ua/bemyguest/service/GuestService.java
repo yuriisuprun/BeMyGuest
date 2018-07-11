@@ -45,7 +45,7 @@ public class GuestService {
     }
 
     public void printGuests(List<Guest> guests){
-        for (Guest guest : getAllGuests()) {
+        for (Guest guest : guests) {
             System.out.println(guest);
         }
     }

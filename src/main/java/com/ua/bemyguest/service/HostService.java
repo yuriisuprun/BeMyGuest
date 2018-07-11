@@ -45,7 +45,7 @@ public class HostService {
     }
 
     public void printHosts(List<Host> hosts){
-        for (Host host : getAllHosts()) {
+        for (Host host : hosts) {
             System.out.println(host);
         }
     }

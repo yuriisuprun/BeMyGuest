@@ -4,8 +4,11 @@ import com.ua.bemyguest.exception.DuplicateGuestException;
 import com.ua.bemyguest.exception.GuestIncorrectId;
 import com.ua.bemyguest.exception.GuestIncorrectLastName;
 import com.ua.bemyguest.model.Guest;
+import com.ua.bemyguest.repository.GuestDAO;
+import com.ua.bemyguest.repository.impl.GuestDAOH2Impl;
 import com.ua.bemyguest.service.GuestService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -36,6 +39,7 @@ public class GuestController {
     }
 
     public void findAllSortedGuests(){
+        System.out.println("List of all sorted guests:");
         guestService.printGuests(guestService.findAllSortedGuests());
     }
 
@@ -54,23 +58,56 @@ public class GuestController {
         System.out.println("Enter phone number of the guest:");
         String phoneNumber = scanner.nextLine();
         System.out.println("Enter the country of the guest:");
-        int country = scanner.nextInt();
+        String country = scanner.nextLine();
         System.out.println("Enter birth date of the guest in the format: YYYY-MM-DD");
         String birthDate = scanner.next();
         System.out.println("Enter locality of the guest:");
         String locality = scanner.next();
-        System.out.println("Enter accommodations of the host");
-
-
+        System.out.println("Enter preferred language of the guest:");
+        String preferredLanguage = scanner.next();
         guest.setFirstName(firstName);
+        guest.setLastName(lastName);
+        guest.setEmail(email);
+        guest.setPhoneNumber(phoneNumber);
+        guest.setCountry(country);
+        guest.setBirthDate(LocalDate.parse(birthDate));
+        guest.setLocality(locality);
+        guest.setPreferredLanguage(preferredLanguage);
+        try {
+            guestService.addGuest(guest);
+        } catch (DuplicateGuestException e) {
+            e.printStackTrace();
+        }
     }
 
     public void printGuests(){
+        System.out.println("List of all guests:");
         guestService.printGuests(guestService.getAllGuests());
     }
 
     public void updateGuest(){
-
+        Scanner scanner = new Scanner(System.in);
+        GuestDAO guestDAO = new GuestDAOH2Impl();
+        System.out.println("Enter the guest number in the list for updating");
+        int n = scanner.nextInt() - 1;
+        Guest guest = guestDAO.getAllGuests().get(n);
+        System.out.println("Enter firstName: ");
+        guest.setFirstName(scanner.next());
+        System.out.println("Enter lastName: ");
+        guest.setLastName(scanner.next());
+        System.out.println("Enter an email of the guest:");
+        guest.setEmail(scanner.next());
+        System.out.println("Enter phone number of the guest:");
+        guest.setPhoneNumber(scanner.nextLine());
+        System.out.println("Enter the country of the guest:");
+        guest.setCountry(scanner.nextLine());
+        System.out.println("Enter birth date of the guest in the format: YYYY-MM-DD");
+        guest.setBirthDate(LocalDate.parse(scanner.next()));
+        System.out.println("Enter locality of the guest:");
+        guest.setLocality(scanner.next());
+        System.out.println("Enter preferred language of the guest:");
+        guest.setPreferredLanguage(scanner.next());
+        guestService.updateGuest(guest);
     }
 
     void deleteGuestById(){

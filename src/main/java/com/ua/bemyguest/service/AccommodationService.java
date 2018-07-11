@@ -48,7 +48,7 @@ public class AccommodationService {
     }
 
     public void printAccommodations(List<Accommodation> accommodations){
-        for (Accommodation accommodation : getAllAccommodations()) {
+        for (Accommodation accommodation : accommodations) {
             System.out.println(accommodation);
         }
     }

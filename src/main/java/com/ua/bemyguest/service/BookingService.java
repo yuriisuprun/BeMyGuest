@@ -46,7 +46,7 @@ public class BookingService {
     }
 
     public void printBookings(List<Booking> bookings){
-        for (Booking booking : getAllBookings()) {
+        for (Booking booking : bookings) {
             System.out.println(booking);
         }
     }
