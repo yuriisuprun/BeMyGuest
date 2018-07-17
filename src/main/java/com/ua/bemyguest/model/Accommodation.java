@@ -8,7 +8,6 @@ public class Accommodation {
     public static final String LOCALITY = "locality";
     public static final String COUNTRY = "country";
     public static final String ADDRESS = "address";
-    public static final String HOST = "host";
     public static final String ACCOMMODATION_TYPE = "accommodation_type";
     public static final String DESCRIPTION = "description";
     public static final String PRICE = "price";
@@ -24,9 +23,10 @@ public class Accommodation {
     private String description;
     private double price;
 
-    public Accommodation(String title, String locality, String country,
-                         String address, Host host, AccommodationType accommodationType,
-                         String description, double price) {
+    public Accommodation(int id, int hostId, String title, String locality, String country, String address,
+                         Host host, AccommodationType accommodationType, String description, double price) {
+        this.id = id;
+        this.hostId = hostId;
         this.title = title;
         this.locality = locality;
         this.country = country;

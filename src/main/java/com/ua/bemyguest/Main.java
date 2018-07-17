@@ -29,7 +29,9 @@ public class Main {
         MainController mainController = new MainController();
         mainController.doWork();
 
-        /*Set<String> languages = new HashSet<>();
+
+        /*Init init = new Init();
+        Set<String> languages = new HashSet<>();
         languages.add("Latin");
         languages.add("English");
 //        languages.add("Italian");
@@ -50,27 +52,28 @@ public class Main {
 
         HostDAO hostDAO = new HostDAOH2Impl();
         AccommodationDAO accommodationDAO = new AccommodationDAOH2Impl();
-        try {
+        *//*try {
             hostDAO.addHost(host);
         } catch (DuplicateHostException e) {
             e.printStackTrace();
-        }*/
+        }*//*
 
-        /*Accommodation accommodation = Accommodation
+        Accommodation accommodation = Accommodation
                 .newBuilder()
                 .setTitle("Room in Rome")
                 .setLocality("Rome")
                 .setCountry("Italy")
                 .setAddress("45 Porrettana street")
-                .setHost(host)
+                .setHostId(1)
                 .setAccommodationType(AccommodationType.ROOM)
                 .setDescription("Great room in the center of city.")
                 .setPrice(1000)
                 .build();
 
-        accommodationDAO.addAccommodation(accommodation);
-        System.out.println(accommodationDAO.getAllAccommodations());*/
-//        System.out.println(hostDAO.getAllHosts());
+//        accommodationDAO.addAccommodation(accommodation);
+        System.out.println(accommodationDAO.getAllAccommodations());
+        System.out.println(hostDAO.getAllHosts());
+    */
     }
 }
 

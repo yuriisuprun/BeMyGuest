@@ -126,7 +126,7 @@ public class AccommodationController {
         int id = scanner.nextInt();
         try {
             accommodationService.deleteAccommodation(id);
-            System.out.println("Accommodation deleted.");
+            System.out.println("The accommodation deleted.");
         } catch (AccommodationIncorrectId accommodationIncorrectId) {
             System.err.println("Wrong id!");
         }
