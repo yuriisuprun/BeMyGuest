@@ -2,6 +2,7 @@ package com.ua.bemyguest.repository.impl;
 
 import com.ua.bemyguest.exception.AccommodationIncorrectId;
 import com.ua.bemyguest.exception.AccommodationIncorrectTitle;
+import com.ua.bemyguest.exception.HostIncorrectId;
 import com.ua.bemyguest.model.AccommodationType;
 import com.ua.bemyguest.model.Host;
 import com.ua.bemyguest.repository.AccommodationDAO;
@@ -17,16 +18,17 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
 
     private static final String ADD_ACCOMMODATION = String.format("INSERT INTO accommodations(%s, %s, %s, %s, %s, %s, %s, %s) " +
                     "VALUES(?, ?, ?, ?, ?, ?, ?, ?);", Accommodation.TITLE, Accommodation.LOCALITY,
-            Accommodation.COUNTRY, Accommodation.ADDRESS, Accommodation.HOST, Accommodation.ACCOMMODATION_TYPE,
+            Accommodation.COUNTRY, Accommodation.ADDRESS, Accommodation.HOST_ID, Accommodation.ACCOMMODATION_TYPE,
             Accommodation.DESCRIPTION, Accommodation.PRICE);
 
     private static final String FIND_ALL_SORTED_ACCOMMODATIONS = "SELECT * FROM accommodations ORDER BY title ASC";
 
-    private static final String GET_ALL_ACCOMMODATIONS = "SELECT * FROM accommodations";
+    private static final String GET_ALL_ACCOMMODATIONS = "SELECT * FROM accommodations JOIN hosts ON " +
+            "accommodations.host_id=hosts.id";
 
     private static final String UPDATE_ACCOMMODATION = String.format("UPDATE accommodations SET %s = ?, %s = ?, %s = ?, " +
                     "%s = ?, %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?", Accommodation.TITLE, Accommodation.LOCALITY,
-            Accommodation.COUNTRY, Accommodation.ADDRESS, Accommodation.HOST, Accommodation.ACCOMMODATION_TYPE,
+            Accommodation.COUNTRY, Accommodation.ADDRESS, Accommodation.HOST_ID, Accommodation.ACCOMMODATION_TYPE,
             Accommodation.DESCRIPTION, Accommodation.PRICE, Accommodation.ID);
 
     private static final String DELETE_ACCOMMODATION_BY_ID = String.format("DELETE FROM accommodations WHERE %s=?;", Accommodation.ID);
@@ -34,6 +36,8 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
     private Connection connection;
     private PreparedStatement pst = null;
     private ResultSet rs;
+
+    private HostDAOH2Impl hostDAOH2 = null;
 
     private static AccommodationDAOH2Impl instance;
 
@@ -86,7 +90,7 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
                 accommodation.setLocality(rs.getString(Accommodation.LOCALITY));
                 accommodation.setCountry(rs.getString(Accommodation.COUNTRY));
                 accommodation.setAddress(rs.getString(Accommodation.ADDRESS));
-                accommodation.setHost((Host) rs.getObject(Accommodation.HOST));
+                accommodation.setHostId(rs.getInt(Accommodation.HOST_ID));
                 accommodation.setAccommodationType(AccommodationType.valueOf(rs.getString(Accommodation.ACCOMMODATION_TYPE)));
                 accommodation.setDescription(rs.getString(Accommodation.DESCRIPTION));
                 accommodation.setPrice(rs.getDouble(Accommodation.PRICE));
@@ -111,7 +115,7 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
             pst.setString(2, accommodation.getLocality());
             pst.setString(3, accommodation.getCountry());
             pst.setString(4, accommodation.getAddress());
-            pst.setObject(5, accommodation.getHost());
+            pst.setInt(5, accommodation.getHostId());
             pst.setString(6, String.valueOf(accommodation.getAccommodationType()));
             pst.setString(7, accommodation.getDescription());
             pst.setDouble(8, accommodation.getPrice());
@@ -138,7 +142,7 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
                 accommodation.setLocality(rs.getString(Accommodation.LOCALITY));
                 accommodation.setCountry(rs.getString(Accommodation.COUNTRY));
                 accommodation.setAddress(rs.getString(Accommodation.ADDRESS));
-                accommodation.setHost((Host) rs.getObject(Accommodation.HOST));
+                accommodation.setHostId(rs.getInt(Accommodation.HOST_ID));
                 accommodation.setAccommodationType(AccommodationType
                         .valueOf(rs.getString(Accommodation.ACCOMMODATION_TYPE)));
                 accommodation.setDescription(rs.getString(Accommodation.DESCRIPTION));
@@ -164,7 +168,7 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
             pst.setString(2, accommodation.getLocality());
             pst.setString(3, accommodation.getCountry());
             pst.setString(4, accommodation.getAddress());
-            pst.setObject(5, accommodation.getHost());
+            pst.setInt(5, accommodation.getHostId());
             pst.setObject(6, accommodation.getAccommodationType());
             pst.setString(7, accommodation.getDescription());
             pst.setObject(8, accommodation.getPrice());
@@ -179,7 +183,7 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
     }
 
     @Override
-    public void deleteAccommodation(int accommodationId) throws AccommodationIncorrectId{
+    public void deleteAccommodation(int accommodationId) throws AccommodationIncorrectId {
         try {
             connection = getInstance().getConnection();
             pst = connection.prepareStatement(DELETE_ACCOMMODATION_BY_ID);

@@ -36,7 +36,6 @@ public class Init {
             Accommodation.LOCALITY + " VARCHAR(255)," +
             Accommodation.COUNTRY + " VARCHAR(255)," +
             Accommodation.ADDRESS + " VARCHAR(255)," +
-            Accommodation.HOST + " VARCHAR(255)," +
             Accommodation.ACCOMMODATION_TYPE + " VARCHAR(255)," +
             Accommodation.DESCRIPTION + " VARCHAR(255)," +
             Accommodation.PRICE + " VARCHAR(255)," +
