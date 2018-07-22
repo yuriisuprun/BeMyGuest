@@ -54,7 +54,7 @@ public class HostController {
         Scanner scanner = new Scanner(System.in);
 
         // filling of the host object
-        System.out.println("\nPlease, enter host's data:");
+        System.out.println("\nPlease, enter host's data...");
         System.out.println("Enter first name of the host:");
         String firstName = scanner.nextLine();
         System.out.println("Enter last name of the host:");
@@ -66,9 +66,9 @@ public class HostController {
         System.out.println("Enter the country of the host:");
         String country = scanner.nextLine();
         System.out.println("Enter birth date of the host in the format: YYYY-MM-DD");
-        String birthDate = scanner.next();
+        String birthDate = scanner.nextLine();
         System.out.println("Enter locality of the host:");
-        String locality = scanner.next();
+        String locality = scanner.nextLine();
         System.out.println("Enter the quantity of host accommodation:");
         int accommodationSize = scanner.nextInt();
         for (int i = 0; i < accommodationSize; i++) {
@@ -84,10 +84,12 @@ public class HostController {
         int languagesSize = scanner.nextInt();
         for (int i = 0; i < languagesSize; i++) {
             System.out.println("Enter the name of language:");
-            String language = scanner.next();
+            String language = scanner.nextLine();
+            scanner.next();
             languages.add(language);
         }
         System.out.println("Enter the join date in the format: YYYY-MM-DD:");
+        scanner.nextLine();
         String joinDate = scanner.nextLine();
         System.out.println("Enter the host's place of work and the position:");
         String work = scanner.nextLine();
@@ -117,7 +119,8 @@ public class HostController {
     public void updateHost() {
         Scanner scanner = new Scanner(System.in);
         HostDAO hostDAO = new HostDAOH2Impl();
-        System.out.println("Enter the host's number in the list for updating");
+        hostService.printHosts(hostService.getAllHosts());
+        System.out.println("Enter the host's number in the list for updating:");
         int n = scanner.nextInt() - 1;
         Host host = hostDAO.getAllHosts().get(n);
         System.out.println("Enter firstName: ");

@@ -46,28 +46,28 @@ public class AccommodationController {
         Scanner scanner = new Scanner(System.in);
 
         // filling of the accommodation object
-        System.out.println("\nEnter accommodation's data:");
-        System.out.println("Enter the title of the accommodation:");
+        System.out.println("\nEnter accommodation's data...");
+        System.out.println("Enter the title of accommodation:");
         String title = scanner.nextLine();
-        System.out.println("Enter the locality of the accommodation:");
+        System.out.println("Enter the locality of accommodation:");
         String locality = scanner.nextLine();
-        System.out.println("Enter the country of the accommodation:");
+        System.out.println("Enter the country of accommodation:");
         String country = scanner.nextLine();
-        System.out.println("Enter the address of the accommodation:");
+        System.out.println("Enter the address of accommodation:");
         String address = scanner.nextLine();
         System.out.println("Enter host's id:");
         int hostId = scanner.nextInt();
-        System.out.println("Enter accommodation type:");
-        String accommodationType = scanner.next();
-        System.out.println("Enter a description of the accommodation:");
+        System.out.println("Enter accommodation type(room, hostel, apartment, house):");
+        String accommodationType = scanner.next().toUpperCase();
+        System.out.println("Enter a description of accommodation:");
         String description = scanner.next();
+        scanner.nextLine();
         System.out.println("Enter accommodation price:");
         double price = scanner.nextDouble();
         accommodation.setTitle(title);
         accommodation.setLocality(locality);
         accommodation.setCountry(country);
         accommodation.setAddress(address);
-        System.out.println("The accommodation was created.");
         try {
             accommodation.setHost(hostService.findHostById(hostId));
         } catch (HostIncorrectId hostIncorrectId) {
@@ -77,6 +77,7 @@ public class AccommodationController {
         accommodation.setDescription(description);
         accommodation.setPrice(price);
         accommodationService.addAccommodation(accommodation);
+        System.out.println("The accommodation was added.");
     }
 
     public void showAccommodations() {
