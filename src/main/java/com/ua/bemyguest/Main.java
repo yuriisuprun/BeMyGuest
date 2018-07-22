@@ -28,52 +28,6 @@ public class Main {
 
         MainController mainController = new MainController();
         mainController.doWork();
-
-
-        /*Init init = new Init();
-        Set<String> languages = new HashSet<>();
-        languages.add("Latin");
-        languages.add("English");
-//        languages.add("Italian");
-
-        Host host = Host.builder()
-                .firstName("Rika")
-                .lastName("Dialina")
-                .email("rika@gmail.com")
-                .phoneNumber("0249990377")
-                .country("USA")
-                .birthDate(LocalDate.parse("1977-01-08"))
-                .locality("Long Beach")
-                .accommodations(null)
-                .languages(languages)
-                .joinDate(LocalDate.parse("2008-04-04"))
-                .work("Hollywood, actress")
-                .build();
-
-        HostDAO hostDAO = new HostDAOH2Impl();
-        AccommodationDAO accommodationDAO = new AccommodationDAOH2Impl();
-        *//*try {
-            hostDAO.addHost(host);
-        } catch (DuplicateHostException e) {
-            e.printStackTrace();
-        }*//*
-
-        Accommodation accommodation = Accommodation
-                .newBuilder()
-                .setTitle("Room in Rome")
-                .setLocality("Rome")
-                .setCountry("Italy")
-                .setAddress("45 Porrettana street")
-                .setHostId(1)
-                .setAccommodationType(AccommodationType.ROOM)
-                .setDescription("Great room in the center of city.")
-                .setPrice(1000)
-                .build();
-
-//        accommodationDAO.addAccommodation(accommodation);
-        System.out.println(accommodationDAO.getAllAccommodations());
-        System.out.println(hostDAO.getAllHosts());
-    */
     }
 }
 
