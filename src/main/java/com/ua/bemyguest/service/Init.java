@@ -27,6 +27,7 @@ public class Init {
             Host.BIRTH_DATE + " DATE," +
             Host.LOCALITY + " VARCHAR(255)," +
             Host.JOIN_DATE + " DATE," +
+            Host.LANGUAGES + " BLOB(300)," +
             Host.WORK + " VARCHAR(255)" +
             ");";
 

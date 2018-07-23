@@ -55,24 +55,24 @@ public class HostController {
 
         // filling of the host object
         System.out.println("\nPlease, enter host's data...");
-        System.out.println("Enter first name of the host:");
+        System.out.println("Enter first name of host:");
         String firstName = scanner.nextLine();
-        System.out.println("Enter last name of the host:");
+        System.out.println("Enter last name of host:");
         String lastName = scanner.nextLine();
-        System.out.println("Enter an email of the host:");
+        System.out.println("Enter an email of host:");
         String email = scanner.nextLine();
-        System.out.println("Enter phone number of the host:");
+        System.out.println("Enter phone number of host:");
         String phoneNumber = scanner.nextLine();
-        System.out.println("Enter the country of the host:");
+        System.out.println("Enter the country of host:");
         String country = scanner.nextLine();
         System.out.println("Enter birth date of the host in the format: YYYY-MM-DD");
         String birthDate = scanner.nextLine();
-        System.out.println("Enter locality of the host:");
+        System.out.println("Enter locality of host:");
         String locality = scanner.nextLine();
         System.out.println("Enter the quantity of host accommodation:");
         int accommodationSize = scanner.nextInt();
         for (int i = 0; i < accommodationSize; i++) {
-            System.out.println("Enter accommodation's id of the host:");
+            System.out.println("Enter accommodation's id of host:");
             int accommodationId  = scanner.nextInt();
             try {
                 accommodations.add(accommodationService.findAccommodationById(accommodationId));
@@ -120,23 +120,30 @@ public class HostController {
         Scanner scanner = new Scanner(System.in);
         HostDAO hostDAO = new HostDAOH2Impl();
         hostService.printHosts(hostService.getAllHosts());
-        System.out.println("Enter the host's number in the list for updating:");
-        int n = scanner.nextInt() - 1;
-        Host host = hostDAO.getAllHosts().get(n);
-        System.out.println("Enter firstName: ");
-        host.setFirstName(scanner.next());
-        System.out.println("Enter lastName: ");
-        host.setLastName(scanner.next());
-        System.out.println("Enter an email of the host:");
-        host.setEmail(scanner.next());
-        System.out.println("Enter phone number of the host:");
-        host.setPhoneNumber(scanner.next());
-        System.out.println("Enter the country of the host:");
-        host.setCountry(scanner.next());
+        System.out.println("Enter a host's id for updating:");
+        int hostId = scanner.nextInt();
+        scanner.nextLine();
+        Host host = null;
+        try {
+            host = hostService.findHostById(hostId);
+        } catch (HostIncorrectId hostIncorrectId) {
+            hostIncorrectId.printStackTrace();
+        }
+        System.out.println("Please, enter the data for updating...");
+        System.out.println("Enter new first name: ");
+        host.setFirstName(scanner.nextLine());
+        System.out.println("Enter new last name: ");
+        host.setLastName(scanner.nextLine());
+        System.out.println("Enter new email of host:");
+        host.setEmail(scanner.nextLine());
+        System.out.println("Enter phone number of host:");
+        host.setPhoneNumber(scanner.nextLine());
+        System.out.println("Enter the country of host:");
+        host.setCountry(scanner.nextLine());
         System.out.println("Enter birth date of the host in the format: YYYY-MM-DD");
-        host.setBirthDate(LocalDate.parse(scanner.next()));
+        host.setBirthDate(LocalDate.parse(scanner.nextLine()));
         System.out.println("Enter locality of the host:");
-        host.setLocality(scanner.next());
+        host.setLocality(scanner.nextLine());
         System.out.println("Enter the quantity of host accommodation:");
         int accommodationSize = scanner.nextInt();
         for (int i = 0; i < accommodationSize; i++) {
@@ -152,24 +159,26 @@ public class HostController {
         int languagesSize = scanner.nextInt();
         for (int i = 0; i < languagesSize; i++) {
             System.out.println("Enter the name of language:");
-            String language = scanner.next();
+            String language = scanner.nextLine();
+            scanner.next();
             languages.add(language);
         }
         System.out.println("Enter the join date in the format: YYYY-MM-DD:");
+        scanner.nextLine();
         host.setJoinDate(LocalDate.parse(scanner.nextLine()));
         System.out.println("Enter the host's place of work and the position:");
         host.setWork(scanner.nextLine());
         hostService.updateHost(host);
-        System.out.println("The host was updated successfully.");
+        System.out.println("The host with id #" + hostId + " was updated successfully.");
     }
 
     public void deleteHostById() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter host's id for deleting:");
-        int id = scanner.nextInt();
+        int hostId = scanner.nextInt();
         try {
-            hostService.deleteHostById(id);
-            System.out.println("The host deleted.");
+            hostService.deleteHostById(hostId);
+            System.out.println("The host with id #" + hostId + " was deleted.");
         } catch (HostIncorrectId hostIncorrectId) {
             System.err.println("Wrong id!");
         }

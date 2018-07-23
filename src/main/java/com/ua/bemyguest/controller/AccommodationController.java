@@ -62,7 +62,7 @@ public class AccommodationController {
         System.out.println("Enter a description of accommodation:");
         String description = scanner.next();
         scanner.nextLine();
-        System.out.println("Enter accommodation price:");
+        System.out.println("Enter accommodation price per night:");
         double price = scanner.nextDouble();
         accommodation.setTitle(title);
         accommodation.setLocality(locality);
@@ -77,7 +77,7 @@ public class AccommodationController {
         accommodation.setDescription(description);
         accommodation.setPrice(price);
         accommodationService.addAccommodation(accommodation);
-        System.out.println("The accommodation was added.");
+        System.out.println("The accommodation was added successfully!");
     }
 
     public void showAccommodations() {

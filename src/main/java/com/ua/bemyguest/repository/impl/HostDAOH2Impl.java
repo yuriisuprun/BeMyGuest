@@ -15,9 +15,9 @@ import static com.ua.bemyguest.repository.impl.ConnectionFactory.*;
 
 public class HostDAOH2Impl implements HostDAO {
 
-    private static final String ADD_HOST = String.format("INSERT INTO hosts(%s, %s, %s, %s, %s, %s, %s, %s, %s) " +
-                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);", Host.FIRST_NAME, Host.LAST_NAME, Host.EMAIL, Host.PHONE_NUMBER,
-            Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.JOIN_DATE, Host.WORK);
+    private static final String ADD_HOST = String.format("INSERT INTO hosts(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) " +
+                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", Host.FIRST_NAME, Host.LAST_NAME, Host.EMAIL, Host.PHONE_NUMBER,
+            Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.JOIN_DATE, Host.LANGUAGES, Host.WORK);
 
 //    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts JOIN accommodations ON hosts.id = accommodations.host_id";
 
@@ -31,9 +31,12 @@ public class HostDAOH2Impl implements HostDAO {
 
     private static final String DELETE_HOST_BY_ID = String.format("DELETE FROM hosts WHERE %s=?;", Host.ID);
 
+    private static final String DROP_HOST_TABLE = "DROP TABLE hosts;";
+
     private Connection connection;
     private PreparedStatement pst;
     private ResultSet rs;
+    private Statement stmt;
 
     private static HostDAOH2Impl instance;
 
@@ -45,28 +48,28 @@ public class HostDAOH2Impl implements HostDAO {
     }
 
     @Override
-    public Host findHostById(int hostId) throws HostIncorrectId{
+    public Host findHostById(int hostId) throws HostIncorrectId {
         Host host = null;
         for (Host host1 : getAllHosts()) {
-            if (host1.getId() == hostId){
+            if (host1.getId() == hostId) {
                 host = host1;
             }
         }
-        if (host == null){
+        if (host == null) {
             throw new HostIncorrectId();
         }
         return host;
     }
 
     @Override
-    public Host findHostByLastName(String hostLastName) throws HostIncorrectLastName{
+    public Host findHostByLastName(String hostLastName) throws HostIncorrectLastName {
         Host guest = null;
         for (Host guest1 : getAllHosts()) {
-            if (guest1.getLastName().equals(hostLastName)){
+            if (guest1.getLastName().equals(hostLastName)) {
                 guest = guest1;
             }
         }
-        if (guest == null){
+        if (guest == null) {
             throw new HostIncorrectLastName();
         }
         return guest;
@@ -79,7 +82,7 @@ public class HostDAOH2Impl implements HostDAO {
             connection = getInstance().getConnection();
             pst = connection.prepareStatement(FIND_ALL_SORTED_HOSTS);
             rs = pst.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 Host host = Host.builder().build();
                 host.setId(rs.getInt(Host.ID));
                 host.setFirstName(rs.getString(Host.FIRST_NAME));
@@ -116,7 +119,8 @@ public class HostDAOH2Impl implements HostDAO {
             pst.setDate(6, Date.valueOf(host.getBirthDate()));
             pst.setString(7, host.getLocality());
             pst.setDate(8, Date.valueOf(host.getJoinDate()));
-            pst.setString(9, host.getWork());
+            pst.setObject(9, host.getLanguages());
+            pst.setString(10, host.getWork());
             pst.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -195,6 +199,19 @@ public class HostDAOH2Impl implements HostDAO {
             e.printStackTrace();
         } finally {
             getInstance().closePreparedStatement(pst);
+            getInstance().closeConnection(connection);
+        }
+    }
+
+    public void dropHostTable() {
+        try {
+            connection = getInstance().getConnection();
+            stmt = connection.createStatement();
+            stmt.executeUpdate(DROP_HOST_TABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            getInstance().closeStatement(stmt);
             getInstance().closeConnection(connection);
         }
     }
