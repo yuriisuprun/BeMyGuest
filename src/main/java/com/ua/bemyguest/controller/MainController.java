@@ -54,7 +54,7 @@ public class MainController {
                 System.out.println("10 - Find accommodation by title.");
                 System.out.println("11 - Update accommodation.");
                 System.out.println("12 - Delete accommodation.");
-                System.out.println(RESET);
+                System.out.print(RESET);
                 break;
             }
             case 2:{
@@ -68,7 +68,7 @@ public class MainController {
                 System.out.println("17 - Find a host by last name.");
                 System.out.println("18 - Update a host.");
                 System.out.println("19 - Delete a host.");
-                System.out.println(RESET);
+                System.out.print(RESET);
                 break;
             }
             case 3:{
@@ -82,7 +82,7 @@ public class MainController {
                 System.out.println("24 - Find a guest by last name.");
                 System.out.println("25 - Update a guest.");
                 System.out.println("26 - Delete a guest.");
-                System.out.println(RESET);
+                System.out.print(RESET);
                 break;
             }
             case 4:{
@@ -96,7 +96,7 @@ public class MainController {
                 System.out.println("31 - Find a booking by start date.");
                 System.out.println("32 - Update a booking.");
                 System.out.println("33 - Delete a booking.");
-                System.out.println(RESET);
+                System.out.print(RESET);
                 break;
             }
             case 5:{
@@ -107,7 +107,7 @@ public class MainController {
                 System.out.println("35 - Add new a guest detail.");
                 System.out.println("36 - Update a guest detail.");
                 System.out.println("37 - Delete a guest detail.");
-                System.out.println(RESET);
+                System.out.print(RESET);
                 break;
             }
             case 6: {

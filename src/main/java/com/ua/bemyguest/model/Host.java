@@ -14,6 +14,7 @@ public class Host extends Person{
 
     public static final String JOIN_DATE = "join_date";
     public static final String WORK = "work";
+    public static final String LANGUAGES = "languages";
 
     private Set<Accommodation> accommodations = new HashSet<>();
     private Set<String> languages = new HashSet<>();

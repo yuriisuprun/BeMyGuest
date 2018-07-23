@@ -11,6 +11,8 @@ import com.ua.bemyguest.model.Accommodation;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 import static com.ua.bemyguest.repository.impl.ConnectionFactory.*;
 
@@ -134,20 +136,38 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
         try {
             connection = getInstance().getConnection();
             pst = connection.prepareStatement(GET_ALL_ACCOMMODATIONS);
+            Map<Integer, Accommodation> accommodationMap = new TreeMap<>();
             rs = pst.executeQuery();
             while (rs.next()) {
-                Accommodation accommodation = new Accommodation();
-                accommodation.setId(rs.getInt(Accommodation.ID));
-                accommodation.setTitle(rs.getString(Accommodation.TITLE));
-                accommodation.setLocality(rs.getString(Accommodation.LOCALITY));
-                accommodation.setCountry(rs.getString(Accommodation.COUNTRY));
-                accommodation.setAddress(rs.getString(Accommodation.ADDRESS));
-                accommodation.setHostId(rs.getInt(Accommodation.HOST_ID));
-                accommodation.setAccommodationType(AccommodationType
-                        .valueOf(rs.getString(Accommodation.ACCOMMODATION_TYPE)));
-                accommodation.setDescription(rs.getString(Accommodation.DESCRIPTION));
-                accommodation.setPrice(rs.getDouble(Accommodation.PRICE));
-                result.add(accommodation);
+                int id = rs.getInt(Accommodation.ID);
+                Accommodation accommodation = accommodationMap.get(id);
+                if (accommodation == null){
+                    accommodation = new Accommodation();
+                    accommodation.setId(rs.getInt(Accommodation.ID));
+                    accommodation.setTitle(rs.getString(Accommodation.TITLE));
+                    accommodation.setLocality(rs.getString(Accommodation.LOCALITY));
+                    accommodation.setCountry(rs.getString(Accommodation.COUNTRY));
+                    accommodation.setAddress(rs.getString(Accommodation.ADDRESS));
+                    accommodation.setHostId(rs.getInt(Accommodation.HOST_ID));
+                    accommodation.setAccommodationType(AccommodationType
+                            .valueOf(rs.getString(Accommodation.ACCOMMODATION_TYPE)));
+                    accommodation.setDescription(rs.getString(Accommodation.DESCRIPTION));
+                    accommodation.setPrice(rs.getDouble(Accommodation.PRICE));
+                    accommodationMap.put(id, accommodation);
+                }
+                Host host = Host.builder().build();
+                host.setId(rs.getInt(Host.ID));
+                host.setFirstName(rs.getString(Host.FIRST_NAME));
+                host.setLastName(rs.getString(Host.LAST_NAME));
+                host.setEmail(rs.getString(Host.EMAIL));
+                host.setPhoneNumber(rs.getString(Host.PHONE_NUMBER));
+                host.setCountry(rs.getString(Host.COUNTRY));
+                host.setBirthDate(rs.getDate(Host.BIRTH_DATE).toLocalDate());
+                host.setLocality(rs.getString(Host.LOCALITY));
+                host.setJoinDate(rs.getDate(Host.JOIN_DATE).toLocalDate());
+                host.setWork(rs.getString(Host.WORK));
+                accommodation.setHost(host);
+                result.addAll(accommodationMap.values());
             }
         } catch (SQLException e) {
             e.printStackTrace();
