@@ -12,16 +12,13 @@ import com.ua.bemyguest.service.AccommodationService;
 import com.ua.bemyguest.service.HostService;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 public class HostController {
 
     private HostService hostService = new HostService();
     private AccommodationService accommodationService = new AccommodationService();
     private Set<Accommodation> accommodations = new HashSet<>();
-    private Set<String> languages = new HashSet<>();
 
     public void findHostById() {
         Scanner scanner = new Scanner(System.in);
@@ -80,14 +77,6 @@ public class HostController {
                 System.err.println("Wrong id!");
             }
         }
-        System.out.println("Enter the quantity of languages:");
-        int languagesSize = scanner.nextInt();
-        for (int i = 0; i < languagesSize; i++) {
-            System.out.println("Enter the name of language:");
-            String language = scanner.nextLine();
-            scanner.next();
-            languages.add(language);
-        }
         System.out.println("Enter the join date in the format: YYYY-MM-DD:");
         scanner.nextLine();
         String joinDate = scanner.nextLine();
@@ -101,7 +90,6 @@ public class HostController {
         host.setBirthDate(LocalDate.parse(birthDate));
         host.setLocality(locality);
         host.setAccommodations(accommodations);
-        host.setLanguages(languages);
         host.setJoinDate(LocalDate.parse(joinDate));
         host.setWork(work);
         try {
@@ -154,14 +142,6 @@ public class HostController {
             } catch (AccommodationIncorrectId accommodationIncorrectId) {
                 System.err.println("Wrong id!");
             }
-        }
-        System.out.println("Enter the quantity of languages:");
-        int languagesSize = scanner.nextInt();
-        for (int i = 0; i < languagesSize; i++) {
-            System.out.println("Enter the name of language:");
-            String language = scanner.nextLine();
-            scanner.next();
-            languages.add(language);
         }
         System.out.println("Enter the join date in the format: YYYY-MM-DD:");
         scanner.nextLine();

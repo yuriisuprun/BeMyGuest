@@ -15,9 +15,9 @@ import static com.ua.bemyguest.repository.impl.ConnectionFactory.*;
 
 public class HostDAOH2Impl implements HostDAO {
 
-    private static final String ADD_HOST = String.format("INSERT INTO hosts(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s) " +
-                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", Host.FIRST_NAME, Host.LAST_NAME, Host.EMAIL, Host.PHONE_NUMBER,
-            Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.JOIN_DATE, Host.LANGUAGES, Host.WORK);
+    private static final String ADD_HOST = String.format("INSERT INTO hosts(%s, %s, %s, %s, %s, %s, %s, %s, %s) " +
+                    "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);", Host.FIRST_NAME, Host.LAST_NAME, Host.EMAIL, Host.PHONE_NUMBER,
+            Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.JOIN_DATE, Host.WORK);
 
 //    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts JOIN accommodations ON hosts.id = accommodations.host_id";
 
@@ -119,8 +119,7 @@ public class HostDAOH2Impl implements HostDAO {
             pst.setDate(6, Date.valueOf(host.getBirthDate()));
             pst.setString(7, host.getLocality());
             pst.setDate(8, Date.valueOf(host.getJoinDate()));
-            pst.setObject(9, host.getLanguages());
-            pst.setString(10, host.getWork());
+            pst.setString(9, host.getWork());
             pst.execute();
         } catch (SQLException e) {
             e.printStackTrace();

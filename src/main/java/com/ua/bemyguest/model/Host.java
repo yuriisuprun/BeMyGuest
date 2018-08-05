@@ -14,20 +14,17 @@ public class Host extends Person{
 
     public static final String JOIN_DATE = "join_date";
     public static final String WORK = "work";
-    public static final String LANGUAGES = "languages";
 
     private Set<Accommodation> accommodations = new HashSet<>();
-    private Set<String> languages = new HashSet<>();
     private LocalDate joinDate;
     private String work;
 
     @Builder
     private Host(int id, String firstName, String lastName, String email, String phoneNumber,
                 String country, LocalDate birthDate, String locality, Set<Accommodation> accommodations,
-                 Set<String> languages, LocalDate joinDate, String work) {
+                 LocalDate joinDate, String work) {
         super(id, firstName, lastName, email, phoneNumber, country, birthDate, locality);
         this.accommodations = accommodations;
-        this.languages = languages;
         this.joinDate = joinDate;
         this.work = work;
     }

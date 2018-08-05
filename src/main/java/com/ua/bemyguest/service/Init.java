@@ -27,7 +27,6 @@ public class Init {
             Host.BIRTH_DATE + " DATE," +
             Host.LOCALITY + " VARCHAR(255)," +
             Host.JOIN_DATE + " DATE," +
-            Host.LANGUAGES + " BLOB(300)," +
             Host.WORK + " VARCHAR(255)" +
             ");";
 
@@ -40,7 +39,7 @@ public class Init {
             Accommodation.ACCOMMODATION_TYPE + " VARCHAR(255)," +
             Accommodation.DESCRIPTION + " VARCHAR(255)," +
             Accommodation.PRICE + " VARCHAR(255)," +
-            Accommodation.HOST_ID + " INT(11) REFERENCES hosts(id)" +
+            Accommodation.HOST_ID + " FOREIGN KEY INT(11) REFERENCES hosts(id)" +
             ");";
 
     private static final String CREATE_GUESTS_TABLE = "CREATE TABLE IF NOT EXISTS guests (" +
@@ -78,6 +77,7 @@ public class Init {
             stmt.executeUpdate(CREATE_GUESTS_TABLE);
             stmt.executeUpdate(CREATE_BOOKINGS_TABLE);
             stmt.executeUpdate(CREATE_GUEST_DETAILS_TABLE);
+            System.out.println("Tables were created successfully!");
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
