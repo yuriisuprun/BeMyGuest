@@ -24,7 +24,7 @@ import java.util.Set;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
 
         /*HostDAOH2Impl hostDAO = new HostDAOH2Impl();
         hostDAO.dropHostTable();*/

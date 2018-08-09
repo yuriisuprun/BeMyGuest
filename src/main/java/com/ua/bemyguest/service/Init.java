@@ -39,7 +39,8 @@ public class Init {
             Accommodation.ACCOMMODATION_TYPE + " VARCHAR(255)," +
             Accommodation.DESCRIPTION + " VARCHAR(255)," +
             Accommodation.PRICE + " VARCHAR(255)," +
-            Accommodation.HOST_ID + " FOREIGN KEY INT(11) REFERENCES hosts(id)" +
+            Accommodation.HOST_ID + " INT(11)," +
+            " FOREIGN KEY (host_id) REFERENCES hosts(id)" +
             ");";
 
     private static final String CREATE_GUESTS_TABLE = "CREATE TABLE IF NOT EXISTS guests (" +

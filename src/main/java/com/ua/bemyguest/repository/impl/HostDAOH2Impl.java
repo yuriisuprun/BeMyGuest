@@ -4,12 +4,13 @@ import com.ua.bemyguest.exception.DuplicateHostException;
 import com.ua.bemyguest.exception.HostIncorrectId;
 import com.ua.bemyguest.exception.HostIncorrectLastName;
 import com.ua.bemyguest.model.Accommodation;
+import com.ua.bemyguest.model.AccommodationType;
 import com.ua.bemyguest.repository.HostDAO;
 import com.ua.bemyguest.model.Host;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Date;
+import java.util.*;
 
 import static com.ua.bemyguest.repository.impl.ConnectionFactory.*;
 
@@ -19,9 +20,9 @@ public class HostDAOH2Impl implements HostDAO {
                     "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);", Host.FIRST_NAME, Host.LAST_NAME, Host.EMAIL, Host.PHONE_NUMBER,
             Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.JOIN_DATE, Host.WORK);
 
-//    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts JOIN accommodations ON hosts.id = accommodations.host_id";
+    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts JOIN accommodations ON hosts.id = accommodations.host_id";
 
-    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts;";
+//    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts;";
 
     private static final String FIND_ALL_SORTED_HOSTS = "SELECT * FROM hosts ORDER BY last_name DESC;";
 
@@ -136,20 +137,38 @@ public class HostDAOH2Impl implements HostDAO {
             connection = getInstance().getConnection();
             pst = connection.prepareStatement(GET_ALL_HOSTS);
             rs = pst.executeQuery();
+            Map<Integer, Host> hostMap = new TreeMap<>();
             while (rs.next()) {
-                Host host = Host.builder().build();
-                host.setId(rs.getInt(Host.ID));
-                host.setFirstName(rs.getString(Host.FIRST_NAME));
-                host.setLastName(rs.getString(Host.LAST_NAME));
-                host.setEmail(rs.getString(Host.EMAIL));
-                host.setPhoneNumber(rs.getString(Host.PHONE_NUMBER));
-                host.setCountry(rs.getString(Host.COUNTRY));
-                host.setBirthDate(rs.getDate(Host.BIRTH_DATE).toLocalDate());
-                host.setLocality(rs.getString(Host.LOCALITY));
-                host.setJoinDate(rs.getDate(Host.JOIN_DATE).toLocalDate());
-                host.setWork(rs.getString(Host.WORK));
-                result.add(host);
+                int id = rs.getInt(Host.ID);
+                Host host = hostMap.get(id);
+                if (host == null) {
+                    host = Host.builder().build();
+                    host.setId(rs.getInt(Host.ID));
+                    host.setFirstName(rs.getString(Host.FIRST_NAME));
+                    host.setLastName(rs.getString(Host.LAST_NAME));
+                    host.setEmail(rs.getString(Host.EMAIL));
+                    host.setPhoneNumber(rs.getString(Host.PHONE_NUMBER));
+                    host.setCountry(rs.getString(Host.COUNTRY));
+                    host.setBirthDate(rs.getDate(Host.BIRTH_DATE).toLocalDate());
+                    host.setLocality(rs.getString(Host.LOCALITY));
+                    host.setAccommodations(new HashSet<>());
+                    host.setJoinDate(rs.getDate(Host.JOIN_DATE).toLocalDate());
+                    host.setWork(rs.getString(Host.WORK));
+                    hostMap.put(id, host);
+                }
+                Accommodation accommodation = Accommodation.newBuilder().build();
+                accommodation.setId(rs.getInt(Accommodation.ID));
+                accommodation.setId(rs.getInt(Accommodation.HOST_ID));
+                accommodation.setTitle(rs.getString(Accommodation.TITLE));
+                accommodation.setLocality(rs.getString(Accommodation.LOCALITY));
+                accommodation.setCountry(rs.getString(Accommodation.COUNTRY));
+                accommodation.setAddress(rs.getString(Accommodation.ADDRESS));
+                accommodation.setAccommodationType(AccommodationType.valueOf(rs.getString(Accommodation.ACCOMMODATION_TYPE)));
+                accommodation.setDescription(rs.getString(Accommodation.DESCRIPTION));
+                accommodation.setPrice(rs.getDouble(Accommodation.PRICE));
+                host.getAccommodations().add(accommodation);
             }
+            result.addAll(hostMap.values());
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
