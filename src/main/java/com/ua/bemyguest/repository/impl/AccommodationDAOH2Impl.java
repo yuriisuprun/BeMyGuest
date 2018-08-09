@@ -35,9 +35,12 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
 
     private static final String DELETE_ACCOMMODATION_BY_ID = String.format("DELETE FROM accommodations WHERE %s=?;", Accommodation.ID);
 
+    private static final String DROP_ACCOMMODATIONS_TABLE = "DROP TABLE accommodations;";
+
     private Connection connection;
     private PreparedStatement pst = null;
     private ResultSet rs;
+    private Statement stmt;
 
     private HostDAOH2Impl hostDAOH2 = null;
 
@@ -216,6 +219,19 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
             e.printStackTrace();
         } finally {
             getInstance().closePreparedStatement(pst);
+            getInstance().closeConnection(connection);
+        }
+    }
+
+    public void dropAccommodationsTable() {
+        try {
+            connection = getInstance().getConnection();
+            stmt = connection.createStatement();
+            stmt.executeUpdate(DROP_ACCOMMODATIONS_TABLE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            getInstance().closeStatement(stmt);
             getInstance().closeConnection(connection);
         }
     }

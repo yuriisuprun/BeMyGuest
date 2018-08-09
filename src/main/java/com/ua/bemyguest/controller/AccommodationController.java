@@ -57,11 +57,11 @@ public class AccommodationController {
         String address = scanner.nextLine();
         System.out.println("Enter host's id:");
         int hostId = scanner.nextInt();
-        System.out.println("Enter accommodation type(room, hostel, apartment, house):");
-        String accommodationType = scanner.next().toUpperCase();
-        System.out.println("Enter a description of accommodation:");
-        String description = scanner.next();
         scanner.nextLine();
+        System.out.println("Enter accommodation type(room, hostel, apartment, house):");
+        String accommodationType = scanner.nextLine().toUpperCase();
+        System.out.println("Enter a description of accommodation:");
+        String description = scanner.nextLine();
         System.out.println("Enter accommodation price per night:");
         double price = scanner.nextDouble();
         accommodation.setTitle(title);

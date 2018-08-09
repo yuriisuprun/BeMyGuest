@@ -18,7 +18,7 @@ public class HostController {
 
     private HostService hostService = new HostService();
     private AccommodationService accommodationService = new AccommodationService();
-    private Set<Accommodation> accommodations = new HashSet<>();
+    private Set<Accommodation> accommodationIds = new HashSet<>();
 
     public void findHostById() {
         Scanner scanner = new Scanner(System.in);
@@ -66,19 +66,7 @@ public class HostController {
         String birthDate = scanner.nextLine();
         System.out.println("Enter locality of host:");
         String locality = scanner.nextLine();
-        System.out.println("Enter the quantity of host accommodation:");
-        int accommodationSize = scanner.nextInt();
-        for (int i = 0; i < accommodationSize; i++) {
-            System.out.println("Enter accommodation's id of host:");
-            int accommodationId  = scanner.nextInt();
-            try {
-                accommodations.add(accommodationService.findAccommodationById(accommodationId));
-            } catch (AccommodationIncorrectId accommodationIncorrectId) {
-                System.err.println("Wrong id!");
-            }
-        }
         System.out.println("Enter the join date in the format: YYYY-MM-DD:");
-        scanner.nextLine();
         String joinDate = scanner.nextLine();
         System.out.println("Enter the host's place of work and the position:");
         String work = scanner.nextLine();
@@ -89,7 +77,7 @@ public class HostController {
         host.setCountry(country);
         host.setBirthDate(LocalDate.parse(birthDate));
         host.setLocality(locality);
-        host.setAccommodations(accommodations);
+        host.setAccommodations(accommodationIds);
         host.setJoinDate(LocalDate.parse(joinDate));
         host.setWork(work);
         try {
@@ -138,7 +126,7 @@ public class HostController {
             System.out.println("Enter accommodation's id of the host:");
             int accommodationId  = scanner.nextInt();
             try {
-                accommodations.add(accommodationService.findAccommodationById(accommodationId));
+                accommodationIds.add(accommodationService.findAccommodationById(accommodationId));
             } catch (AccommodationIncorrectId accommodationIncorrectId) {
                 System.err.println("Wrong id!");
             }
