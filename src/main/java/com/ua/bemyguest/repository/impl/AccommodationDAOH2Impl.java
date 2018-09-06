@@ -120,7 +120,7 @@ public class AccommodationDAOH2Impl implements AccommodationDAO {
             pst.setString(2, accommodation.getLocality());
             pst.setString(3, accommodation.getCountry());
             pst.setString(4, accommodation.getAddress());
-            pst.setInt(5, accommodation.getHostId());
+            pst.setInt(5, accommodation.getHost().getId());
             pst.setString(6, String.valueOf(accommodation.getAccommodationType()));
             pst.setString(7, accommodation.getDescription());
             pst.setDouble(8, accommodation.getPrice());

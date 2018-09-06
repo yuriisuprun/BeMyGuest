@@ -20,7 +20,7 @@ public class HostDAOH2Impl implements HostDAO {
                     "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);", Host.FIRST_NAME, Host.LAST_NAME, Host.EMAIL, Host.PHONE_NUMBER,
             Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.JOIN_DATE, Host.WORK);
 
-    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts JOIN accommodations ON hosts.id = accommodations.host_id";
+    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts LEFT JOIN accommodations ON hosts.id = accommodations.host_id";
 
 //    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts;";
 
@@ -123,7 +123,7 @@ public class HostDAOH2Impl implements HostDAO {
             pst.setString(9, host.getWork());
             pst.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DuplicateHostException();
         } finally {
             getInstance().closePreparedStatement(pst);
             getInstance().closeConnection(connection);
@@ -135,8 +135,8 @@ public class HostDAOH2Impl implements HostDAO {
         List<Host> result = new ArrayList<>();
         try {
             connection = getInstance().getConnection();
-            pst = connection.prepareStatement(GET_ALL_HOSTS);
-            rs = pst.executeQuery();
+            stmt = connection.createStatement();
+            rs = stmt.executeQuery(GET_ALL_HOSTS);
             Map<Integer, Host> hostMap = new TreeMap<>();
             while (rs.next()) {
                 int id = rs.getInt(Host.ID);
@@ -173,7 +173,7 @@ public class HostDAOH2Impl implements HostDAO {
             e.printStackTrace();
         } finally {
             getInstance().closeResultSet(rs);
-            getInstance().closePreparedStatement(pst);
+            getInstance().closeStatement(stmt);
             getInstance().closeConnection(connection);
         }
         return result;
@@ -221,7 +221,7 @@ public class HostDAOH2Impl implements HostDAO {
         }
     }
 
-    public void dropHostTable() {
+    public void dropHostsTable() {
         try {
             connection = getInstance().getConnection();
             stmt = connection.createStatement();
