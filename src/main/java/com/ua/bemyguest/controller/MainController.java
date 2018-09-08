@@ -19,8 +19,6 @@ public class MainController {
     private GuestController guestController = new GuestController();
     private HostController hostController = new HostController();
 
-    Scanner scanner = new Scanner(System.in);
-
     public void doWork() {
         showHelloMessage();
         while (true) {
@@ -30,7 +28,7 @@ public class MainController {
         }
     }
 
-    private void showMainMenu(){
+    private void showMainMenu() {
         System.out.println("Please, enter the code of an operation...");
         System.out.println("1 - OPERATIONS WITH ACCOMMODATION.");
         System.out.println("2 - OPERATIONS WITH HOSTS.");
@@ -40,10 +38,11 @@ public class MainController {
         System.out.println("\n0 - For exit.");
     }
 
-    private void makeMainChoice(){
+    private void makeMainChoice() {
+        Scanner scanner = new Scanner(System.in);
         int choice = scanner.nextInt();
-        switch (choice){
-            case 1:{
+        switch (choice) {
+            case 1: {
                 System.out.println(BLACK_UNDERLINED);
                 System.out.println("OPERATIONS WITH ACCOMMODATION");
                 System.out.println(YELLOW);
@@ -57,7 +56,7 @@ public class MainController {
                 System.out.print(RESET);
                 break;
             }
-            case 2:{
+            case 2: {
                 System.out.println(BLACK_UNDERLINED);
                 System.out.println("OPERATIONS WITH HOSTS");
                 System.out.println(YELLOW);
@@ -71,7 +70,7 @@ public class MainController {
                 System.out.print(RESET);
                 break;
             }
-            case 3:{
+            case 3: {
                 System.out.println(BLACK_UNDERLINED);
                 System.out.println("OPERATIONS WITH GUESTS");
                 System.out.println(YELLOW);
@@ -85,7 +84,7 @@ public class MainController {
                 System.out.print(RESET);
                 break;
             }
-            case 4:{
+            case 4: {
                 System.out.println(BLACK_UNDERLINED);
                 System.out.println("OPERATIONS WITH BOOKINGS");
                 System.out.println(YELLOW);
@@ -99,7 +98,7 @@ public class MainController {
                 System.out.print(RESET);
                 break;
             }
-            case 5:{
+            case 5: {
                 System.out.println(BLACK_UNDERLINED);
                 System.out.println("OPERATIONS WITH GUEST DETAILS");
                 System.out.println(YELLOW);

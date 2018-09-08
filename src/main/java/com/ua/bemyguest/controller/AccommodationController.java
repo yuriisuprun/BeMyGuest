@@ -68,11 +68,7 @@ public class AccommodationController {
         accommodation.setLocality(locality);
         accommodation.setCountry(country);
         accommodation.setAddress(address);
-        try {
-            accommodation.setHost(hostService.findHostById(hostId));
-        } catch (HostIncorrectId hostIncorrectId) {
-            hostIncorrectId.printStackTrace();
-        }
+        accommodation.setHostId(hostId);
         accommodation.setAccommodationType(AccommodationType.valueOf(accommodationType));
         accommodation.setDescription(description);
         accommodation.setPrice(price);

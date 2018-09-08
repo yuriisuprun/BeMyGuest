@@ -21,7 +21,7 @@ public class BookingService {
         return bookingDAOH2.findBookingById(bookingId);
     }
 
-    public Booking findBookingByStartDate(LocalDate bookingStartDate) throws BookingIncorrectStartDate{
+    public List<Booking> findBookingByStartDate(LocalDate bookingStartDate) throws BookingIncorrectStartDate{
         return bookingDAOH2.findBookingByStartDate(bookingStartDate);
     }
 

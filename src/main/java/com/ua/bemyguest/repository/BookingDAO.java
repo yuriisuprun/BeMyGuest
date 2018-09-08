@@ -12,7 +12,7 @@ public interface BookingDAO {
 
     Booking findBookingById(int bookingId) throws BookingIncorrectId;
 
-    Booking findBookingByStartDate(LocalDate bookingStartDate) throws BookingIncorrectStartDate;
+    List<Booking> findBookingByStartDate(LocalDate bookingStartDate) throws BookingIncorrectStartDate;
 
     List<Booking> findAllSortedBookings();
 

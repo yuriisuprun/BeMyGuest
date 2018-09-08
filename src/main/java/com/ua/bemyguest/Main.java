@@ -26,21 +26,6 @@ public class Main {
 
     public static void main(String... args) {
 
-        /*HostDAOH2Impl hostDAO = new HostDAOH2Impl();
-        hostDAO.dropHostTable();*/
-
-        /*HostDAOH2Impl hostDAOH2 = new HostDAOH2Impl();
-        Host host = Host.builder()
-                .firstName("Drew")
-                .birthDate(LocalDate.now())
-                .joinDate(LocalDate.of(2015, 01, 15))
-                .build();
-        try {
-            hostDAOH2.addHost(host);
-        } catch (DuplicateHostException e) {
-            e.printStackTrace();
-        }*/
-
         MainController mainController = new MainController();
         mainController.doWork();
     }

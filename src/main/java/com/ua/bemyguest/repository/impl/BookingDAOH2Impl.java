@@ -18,15 +18,15 @@ import static com.ua.bemyguest.repository.impl.ConnectionFactory.*;
 
 public class BookingDAOH2Impl implements BookingDAO {
 
-    private static final String ADD_BOOKING = String.format("INSERT INTO bookings(%s, %s) " +
-            "VALUES(?, ?)", Booking.START_DATE, Booking.END_DATE);
+    private static final String ADD_BOOKING = String.format("INSERT INTO bookings(%s, %s, %s, %s) " +
+            "VALUES(?, ?, ?, ?)", Booking.ACCOMMODATION_ID, Booking.GUEST_ID, Booking.START_DATE, Booking.END_DATE);
 
     private static final String GET_ALL_BOOKINGS = "SELECT * FROM bookings";
 
-    private static final String FIND_ALL_SORTED_BOOKINGS = "SELECT * FROM bookings ORDER BY id ASC";
+    private static final String FIND_ALL_SORTED_BOOKINGS = "SELECT * FROM bookings ORDER BY start_date ASC";
 
-    private static final String UPDATE_BOOKING = String.format("UPDATE bookings SET %s = ?, %s = ? WHERE %s = ?",
-            Booking.START_DATE, Booking.END_DATE, Booking.ID);
+    private static final String UPDATE_BOOKING = String.format("UPDATE bookings SET %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",
+            Booking.ACCOMMODATION_ID, Booking.GUEST_ID, Booking.START_DATE, Booking.END_DATE, Booking.ID);
 
     private static final String DELETE_BOOKING_BY_ID = String.format("DELETE FROM bookings WHERE %s=?", Booking.ID);
 
@@ -58,17 +58,17 @@ public class BookingDAOH2Impl implements BookingDAO {
     }
 
     @Override
-    public Booking findBookingByStartDate(LocalDate startDate) throws BookingIncorrectStartDate {
-        Booking booking = null;
+    public List<Booking> findBookingByStartDate(LocalDate startDate) throws BookingIncorrectStartDate {
+        List<Booking> bookingList = new ArrayList<>();
         for (Booking booking1 : getAllBookings()) {
             if (booking1.getStartDate().equals(startDate)) {
-                booking = booking1;
+                bookingList.add(booking1);
             }
         }
-        if (booking == null) {
+        if (bookingList.size() == 0){
             throw new BookingIncorrectStartDate();
         }
-        return booking;
+        return bookingList;
     }
 
     @Override
@@ -82,8 +82,10 @@ public class BookingDAOH2Impl implements BookingDAO {
             while (rs.next()) {
                 Booking booking = new Booking();
                 booking.setId(rs.getInt(Booking.ID));
+                booking.setAccommodationId(rs.getInt(Booking.ACCOMMODATION_ID));
+                booking.setGuestId(rs.getInt(Booking.GUEST_ID));
                 booking.setStartDate(rs.getDate(Booking.START_DATE).toLocalDate());
-                booking.setStartDate(rs.getDate(Booking.END_DATE).toLocalDate());
+                booking.setEndDate(rs.getDate(Booking.END_DATE).toLocalDate());
                 sortedResult.add(booking);
             }
         } catch (SQLException e) {
@@ -106,8 +108,10 @@ public class BookingDAOH2Impl implements BookingDAO {
         try {
             connection = getInstance().getConnection();
             pst = connection.prepareStatement(ADD_BOOKING);
-            pst.setObject(1, booking.getStartDate());
-            pst.setObject(2, booking.getEndDate());
+            pst.setInt(1, booking.getAccommodationId());
+            pst.setInt(2, booking.getGuestId());
+            pst.setObject(3, booking.getStartDate());
+            pst.setObject(4, booking.getEndDate());
             pst.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -127,6 +131,8 @@ public class BookingDAOH2Impl implements BookingDAO {
             while (rs.next()) {
                 Booking booking = new Booking();
                 booking.setId(rs.getInt(Booking.ID));
+                booking.setAccommodationId(rs.getInt(Booking.ACCOMMODATION_ID));
+                booking.setGuestId(rs.getInt(Booking.GUEST_ID));
                 booking.setStartDate(rs.getDate(Booking.START_DATE).toLocalDate());
                 booking.setEndDate(rs.getDate(Booking.END_DATE).toLocalDate());
                 result.add(booking);
@@ -146,8 +152,11 @@ public class BookingDAOH2Impl implements BookingDAO {
         try {
             connection = getInstance().getConnection();
             pst = connection.prepareStatement(UPDATE_BOOKING);
-            pst.setObject(1, booking.getStartDate());
-            pst.setObject(1, booking.getEndDate());
+            pst.setInt(1, booking.getAccommodationId());
+            pst.setInt(2, booking.getGuestId());
+            pst.setObject(3, booking.getStartDate());
+            pst.setObject(4, booking.getEndDate());
+            pst.setInt(5, booking.getId());
             pst.execute();
         } catch (SQLException e) {
             e.printStackTrace();
