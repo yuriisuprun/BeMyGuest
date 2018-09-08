@@ -20,9 +20,9 @@ public class HostDAOH2Impl implements HostDAO {
                     "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?);", Host.FIRST_NAME, Host.LAST_NAME, Host.EMAIL, Host.PHONE_NUMBER,
             Host.COUNTRY, Host.BIRTH_DATE, Host.LOCALITY, Host.JOIN_DATE, Host.WORK);
 
-    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts LEFT JOIN accommodations ON hosts.id = accommodations.host_id";
+//    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts LEFT JOIN accommodations ON hosts.id = accommodations.host_id";
 
-//    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts;";
+    private static final String GET_ALL_HOSTS = "SELECT * FROM hosts;";
 
     private static final String FIND_ALL_SORTED_HOSTS = "SELECT * FROM hosts ORDER BY last_name DESC;";
 

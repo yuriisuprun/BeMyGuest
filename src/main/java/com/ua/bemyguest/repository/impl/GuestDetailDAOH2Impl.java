@@ -15,15 +15,15 @@ import static com.ua.bemyguest.repository.impl.ConnectionFactory.*;
 
 public class GuestDetailDAOH2Impl implements GuestDetailDAO {
 
-    private static final String ADD_GUEST_DETAIL = String.format("INSERT INTO guest_details(%s) " +
-            "VALUES(?)", GuestDetail.REVIEW);
+    private static final String ADD_GUEST_DETAIL = String.format("INSERT INTO guest_details(%s, %s) " +
+            "VALUES(?, ?)", GuestDetail.GUEST_ID, GuestDetail.REVIEW);
 
     private static final String GET_ALL_GUEST_DETAILS = "SELECT * FROM guest_details";
 
     private static final String FIND_ALL_SORTED_GUEST_DETAILS = "SELECT * FROM guest_details ORDER BY id ASC";
 
-    private static final String UPDATE_BOOKING = String.format("UPDATE bookings SET %s = ? WHERE %s = ?",
-            GuestDetail.REVIEW, GuestDetail.ID);
+    private static final String UPDATE_BOOKING = String.format("UPDATE guest_details SET %s = ?, %s = ? WHERE %s = ?",
+            GuestDetail.GUEST_ID, GuestDetail.REVIEW, GuestDetail.ID);
 
     private static final String DELETE_GUEST_DETAIL_BY_ID = String.format("DELETE FROM guest_details WHERE %s = ?", GuestDetail.ID);
 
@@ -82,7 +82,8 @@ public class GuestDetailDAOH2Impl implements GuestDetailDAO {
         try {
             connection = getInstance().getConnection();
             pst = connection.prepareStatement(ADD_GUEST_DETAIL);
-            pst.setString(1, guestDetail.getReview());
+            pst.setInt(1, guestDetail.getGuestId());
+            pst.setString(2, guestDetail.getReview());
             pst.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -120,7 +121,9 @@ public class GuestDetailDAOH2Impl implements GuestDetailDAO {
         try {
             connection = getInstance().getConnection();
             pst = connection.prepareStatement(UPDATE_BOOKING);
-            pst.setString(1, guestDetail.getReview());
+            pst.setInt(1, guestDetail.getGuestId());
+            pst.setString(2, guestDetail.getReview());
+            pst.setInt(3, guestDetail.getId());
             pst.execute();
         } catch (SQLException e) {
             e.printStackTrace();
