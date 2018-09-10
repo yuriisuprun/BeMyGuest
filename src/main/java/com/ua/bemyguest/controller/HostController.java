@@ -120,7 +120,7 @@ public class HostController {
         host.setBirthDate(LocalDate.parse(scanner.nextLine()));
         System.out.println("Enter locality of the host:");
         host.setLocality(scanner.nextLine());
-        System.out.println("Enter the quantity of host accommodation:");
+        System.out.println("Enter the quantity of host accommodations:");
         int accommodationSize = scanner.nextInt();
         for (int i = 0; i < accommodationSize; i++) {
             System.out.println("Enter accommodation's id of the host:");

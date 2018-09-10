@@ -23,6 +23,10 @@ public class Accommodation {
     private String description;
     private double price;
 
+    public Accommodation() {
+
+    }
+
     public Accommodation(int id, int hostId, String title, String locality, String country, String address,
                          Host host, AccommodationType accommodationType, String description, double price) {
         this.id = id;
@@ -150,10 +154,6 @@ public class Accommodation {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public Accommodation() {
-
     }
 
     public static Builder newBuilder() {
