@@ -156,16 +156,15 @@ public class HostDAOH2Impl implements HostDAO {
                     host.setWork(rs.getString(Host.WORK));
                     hostMap.put(id, host);
                 }
-                Accommodation accommodation = Accommodation.newBuilder().build();
+                Accommodation accommodation = new Accommodation();
                 accommodation.setId(rs.getInt(Accommodation.ID));
-                accommodation.setId(rs.getInt(Accommodation.HOST_ID));
-                accommodation.setTitle(rs.getString(Accommodation.TITLE));
+//                accommodation.setTitle(rs.getString(Accommodation.TITLE));
                 accommodation.setLocality(rs.getString(Accommodation.LOCALITY));
                 accommodation.setCountry(rs.getString(Accommodation.COUNTRY));
-                accommodation.setAddress(rs.getString(Accommodation.ADDRESS));
-                accommodation.setAccommodationType(AccommodationType.valueOf(rs.getString(Accommodation.ACCOMMODATION_TYPE)));
-                accommodation.setDescription(rs.getString(Accommodation.DESCRIPTION));
-                accommodation.setPrice(rs.getDouble(Accommodation.PRICE));
+//                accommodation.setAddress(rs.getString(Accommodation.ADDRESS));
+//                accommodation.setAccommodationType(AccommodationType.valueOf(rs.getString(Accommodation.ACCOMMODATION_TYPE)));
+//                accommodation.setDescription(rs.getString(Accommodation.DESCRIPTION));
+//                accommodation.setPrice(rs.getDouble(Accommodation.PRICE));
                 host.getAccommodations().add(accommodation);
             }
             result.addAll(hostMap.values());
