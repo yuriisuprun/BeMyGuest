@@ -2,7 +2,8 @@ group: deprecated-2017Q4
 
 os:
  - linux
-language: java
+ 
+language: generic
 
 jdk:
  - openjdk8
