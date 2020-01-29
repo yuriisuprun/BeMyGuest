@@ -7,8 +7,7 @@ language: generic
 jdk: openjdk8
  
 cache:
-  directories:
-   $HOME/.m2
+   directories: $HOME/.m2
   
 install: - mvn clean install -Dgpg.skip=true
   
