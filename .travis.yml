@@ -1,17 +1,13 @@
 group: deprecated-2017Q4
 
+dist: xenial
+
 os: linux
- 
+  
 language: generic
 
 jdk: openjdk8
- 
+  
 cache:
-   directories: $HOME/.m2
-  
-install: - mvn clean install -Dgpg.skip=true
-  
-after_success: - mvn package -DskipTests
-  
-#install:
-#- mvn install -DskipTests=false -Dmaven.javadoc.skip=true -B -V
+  directories:
+    $HOME/.m2
